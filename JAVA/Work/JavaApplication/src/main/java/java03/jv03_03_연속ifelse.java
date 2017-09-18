@@ -2,7 +2,7 @@ package java03;
 
 import java.util.Scanner;
 
-public class jv03_04_연속ifelse {
+public class jv03_03_연속ifelse {
     
     public static void main(String[] args){
         
@@ -10,13 +10,15 @@ public class jv03_04_연속ifelse {
     char grade = 0;
     
      
-    System.out.print("Grade: " );
+    System.out.print ("Grade: " ); //키보드 입력 받기
     
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in); //키보드 입력 받기
     
     score = sc.nextInt();
     
-    if (score >= 90 && score <= 100){
+    if (score >= 90 && score <= 100){/* && -> and 연산, x와 y모두 참이면 참, 
+                                         그렇지 않으면 거짓,
+                                         키보드 출력하기 */
         grade = 'A';
         
     }else if(score >= 80 && score <=89){
@@ -30,7 +32,7 @@ public class jv03_04_연속ifelse {
     }
     
    
-    System.out.println("학점 : " + grade);
+    System.out.println("학점 : " + grade); // 출력
    
    
     

@@ -6,7 +6,7 @@ public class jv03_01_if {
     
     public static void main(String[] args){
         
-        int grade ;
+        
         Scanner keyboard = new Scanner(System.in);
         System.out.print("성적을 입력하세요 :");
         
