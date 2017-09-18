@@ -1,4 +1,4 @@
-package java03.exercise;
+package java03;
 
 import java.util.Scanner;
 
@@ -7,9 +7,9 @@ public class ex03_01_LargeSmall {
     public static void main(String[] args){
         int n;
         
-        Scanner sc = new Scanner(System.in);
+        System.out.print("Grade: " );
         
-        n = sc.nextInt();
+       
         
         if ( n >= 100) {
             System.out.println("large." );
