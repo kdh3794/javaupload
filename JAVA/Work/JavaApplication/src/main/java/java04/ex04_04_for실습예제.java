@@ -19,7 +19,7 @@ public class ex04_04_for실습예제 {
                 sum+=i;                    
         }
         
-        else 
+        else //A가 B보다 작을 경우 여기서 실행
         {
             for (int i=B; i<=A; i=i+1)
                 sum+=i;
