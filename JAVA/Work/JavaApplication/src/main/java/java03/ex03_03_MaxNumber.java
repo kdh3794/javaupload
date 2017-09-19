@@ -20,18 +20,20 @@ public class ex03_03_MaxNumber {
         z = sc.nextInt();
         
         if (x > y){
-            System.out.println("입력 받은 수 중 가장 큰 수" +x);
-            if(y > x ){ 
-                System.out.println("입력 받은 수 중 가장 큰 수" +y);
-            }
-            else if(z > x){
-                System.out.println("입력 받은 수 중 가장 큰 수" +z );
-            }
-                   
-                
-        }
-        }
+            
+            
+            if(x > z ){ 
+                          
+            }else 
+            
+                       }
+                       
+    }                
+    
+     
+}//다시
+        
             
         
         
-    }
+    

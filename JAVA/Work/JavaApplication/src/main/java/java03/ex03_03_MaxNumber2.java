@@ -14,7 +14,7 @@ public class ex03_03_MaxNumber2 {
         
         if (x >= y && x >=z){ //x가 y보다 크거나 같고 x가 z보다 크거나 같을때
             max = x; //그럴경우 최대값은 x다
-        }else if(y >= x && y >=z){ 
+        }else if( y >=z ){ //y >= z &&  <--위에서 선언을 해주었기 때문에 ㄴㄴ
             max = y;
         }else {
             max = z;
