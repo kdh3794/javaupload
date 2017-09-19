@@ -7,7 +7,7 @@ public class ex02_01_면적구하기 {
    public static void main(String[] args){
        int w;
        int h;           
-       int area ;
+       int area;
        int perimeter;
        
        Scanner keyboard = new Scanner(System.in);

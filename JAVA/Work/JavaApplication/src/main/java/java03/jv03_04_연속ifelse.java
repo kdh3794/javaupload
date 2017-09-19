@@ -2,7 +2,7 @@ package java03;
 
 import java.util.Scanner;
 
-public class jv03_03_연속ifelse {
+public class jv03_04_연속ifelse {
     
     public static void main(String[] args){
         
@@ -21,7 +21,7 @@ public class jv03_03_연속ifelse {
                                          키보드 출력하기 */
         grade = 'A';
         
-    }else if(score >= 80 && score <=89){
+    }else if(score >= 80 && score <=89){ //&& score <=89 하지 않아도 될듯?
         grade = 'B';
     }else if(score >= 70 && score <=79){
         grade = 'C';
