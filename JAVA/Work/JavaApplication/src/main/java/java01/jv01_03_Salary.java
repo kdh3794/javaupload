@@ -8,7 +8,7 @@ public class jv01_03_Salary {
         int salary  = 0;   // 월급
         int deposit = 0;  // 저축액
 
-        Scanner keyboard = new Scanner(System.in);
+        Scanner keyboard/*변수명*/ = new Scanner(System.in);//scanner 선언?
         System.out.print("월급을 입력하시오:");
         salary = keyboard.nextInt();  // 값을 입력 받아 변수에 저장
 
