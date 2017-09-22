@@ -10,7 +10,7 @@ public class jv04_11_구구단세로출력 {
                 
                 r = i * j;
                 
-                System.out.print(i + " * " + j + " = " + r);
+                System.out.println(i + " * " + j + " = " + r);
                 
                 // System.out.format("%2d * %d = %d", i, j, r);
                 if (j < 9) // j(뒷자리)가 9보다 작으면 ,

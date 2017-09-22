@@ -29,3 +29,35 @@ toritoisegit -> add 하기 . 폴더 오른쪽 클릭해서 git commit 누르고 all 누르고 모�
 
 
 문자 출력하는거 5p랑 18p 외우기
+
+
+android studio 위치 /home/tester1/Android/Sdk
+
+설치하고난뒤는 configure -> sdk manager->.0.5(반드시 이버전을 설치,  최소 기준임)  7.1.1을 설치
+
+
+linux upuntu desktop 16.0.4 설치
+이름 ~~
+모드 : 전문가 모드
+하드 용량 20
+메모리 2
+
+네트워크 ip 안되면 브리지 어댑터 같은데 ?
+
+1. java 설치
+2. bvulid 툴 설치
+3. androide srudio 설치 & 설정
+
+<초기설정>
+안드로이드 들어가서 위쪽 녹색 화살표  -> create new~ -> os 선택 nexus 5선택하고 next 
+-> 21버전 lollipop-> 오른쪽 install->next->finish->에뮬레이터 추가된거 확인하고 ok
+
+
+강사님이 git hub에 올려놓으신거 받으려면 D:\workspace\Lecture\JAVA 들어가서 java오른쪽 누르고 
+pull(잘못하면 내 자바 코드랑 연동)
+
+9.21
+이클립스 설정파일은 메타데이터에 저장. 메타데이터 파일을 옮기면 된다.
+
+9.22
+구구단 쪽.  무한루프 해보기
