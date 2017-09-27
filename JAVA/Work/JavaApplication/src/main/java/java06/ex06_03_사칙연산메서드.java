@@ -11,28 +11,26 @@ public class ex06_03_사칙연산메서드 {
         System.out.print("First num : ");
         x = sc.nextInt(); // x 값 입력
         System.out.print("Second num : ");
-        y = sc.nextInt(); //y값 입력
-        int add = Add(x, y); //add선언
+        y = sc.nextInt(); // y값 입력
+        int add = Add(x, y); // add선언
         int minus = Minus(x, y);
         int mul = Mul(x, y);
         double div = Div(x, y); // 실수형이므로 double 사용
         
-        System.out.format("div : %.3f\n", div);
-        System.out.println("Mul : " + mul);
-        System.out.println("Minus : " + minus);
         System.out.println("Add : " + add);
+        System.out.println("Minus : " + minus);
+        System.out.println("Mul : " + mul);
+        System.out.printf("Div : %.6f ", +div); // 실수 소수 점 표현 위해 printf
         
     }
     
-    private static double Div(double x, double y) {
+    private static double Div(double x, double y) { //실수형이므로 double사용
         double sum = x / y;
-        
         return sum;
     }
     
     private static int Mul(int x, int y) {
         int sum2 = x * y;
-        
         return sum2;
     }
     
