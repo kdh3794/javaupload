@@ -17,11 +17,10 @@ public class jv07_03_반평균구하기3 {
         // 입력 받아 배열에 저장
         for (int i = 0; i <= array.length - 1; i = i + 1) {
             
-            System.out.print("성적을 입력하시오 : "); // 사용자를 위한 텍스트 출력
-            array[i] = sc.nextInt(); // 정수 입력 받아 x 공간에 저장.
+            System.out.print("성적을 입력하시오 : ");
+            array[i] = sc.nextInt(); // 정수 입력 받아 i 공간에 저장.
             
         }
-        // 배열 값 출력
         
         for (int i = 0; i <= array.length - 1; i = i + 1) {
             
