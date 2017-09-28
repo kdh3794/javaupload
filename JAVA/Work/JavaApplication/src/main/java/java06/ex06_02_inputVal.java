@@ -17,3 +17,5 @@ public class ex06_02_inputVal {
     }
     
 }
+
+

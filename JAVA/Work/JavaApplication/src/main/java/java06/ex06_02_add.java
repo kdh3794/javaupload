@@ -8,6 +8,7 @@ public class ex06_02_add {
         Scanner sc = new Scanner(System.in);
         int x = sc.nextInt();
         int y = sc.nextInt();
+        
         int value = add(x, y); //value 선언 add()밑에 메소드로 넘어감.
         
         System.out.print(value);
