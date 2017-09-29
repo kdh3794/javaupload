@@ -24,12 +24,12 @@ public class ex03_03_MaxNumber {
             
             if(x > z ){ 
                           
-            }else 
+            }else {
             
                        }
                        
     }                
-    
+    }
      
 }//다시
         
