@@ -28,7 +28,7 @@ public class ex07_03_배열로최대최소구하기 {
         // 최대값을 출력
         System.out.println("최대값 : " + arr[arr.length - 1]);
     }
-
+    
     private static void printArray(int[] arr) {
         for (int i = 0; i <= arr.length - 1; i = i + 1) {
             // i=0, arr[0]
