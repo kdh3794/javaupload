@@ -25,7 +25,7 @@ public class jv07_09_maxarray {
         
      
         int temp = max(array);
-        System.out.println("temp의 최대값 : " + temp);
+        System.out.println("temp최대값 : " + temp);
         
         // 최대값은 배열의마지박방(배열명.length-1)에, 최소값을 배열의 0번에
         System.out.println("최대값 : " + array[array.length - 1]);
