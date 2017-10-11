@@ -21,7 +21,7 @@ public class ex07_02_반평균구하기4 {
             for (int j = 0; j <= numbers.length - 1; j = j + 1) {
                 
                 sum = sum + numbers[j]; // sum 함수를 통해서 배열의 값들을 더해줌. numbers[입력해 준 성적들]
-                avg = sum / numbers.length; // sum을 배열의 입력 값만큼 나눈다.  y를 넣어주어도 됨. 입력값이 배열값이기 때문에.
+                avg = sum / numbers.length; // sum을 배열의 입력 값만큼 나눈다. y를 넣어주어도 됨. 입력값이 배열값이기 때문에.
                 
             }
             
