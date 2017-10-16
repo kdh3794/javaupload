@@ -10,7 +10,7 @@ public class BoxTest {
         myBox.setLength(100); // height: 100
         myBox.printVolumn(); // 부피를 계산하고 출력하시오.
         
-        // int tmp;
+        
         
     }
 }

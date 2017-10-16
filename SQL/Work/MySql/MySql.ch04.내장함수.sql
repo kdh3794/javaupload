@@ -129,58 +129,102 @@ select now(), date_format(now(), '%s');
 
 select now(), curtime(), date_format( now(), '%H:%i:%s' ), date_format(curtime(), '%H:%i:%s');
 select now(), date_format(now(), '%T');
--- 이번달의 첫째날 요일 구하기
-select '2017-10-01', date_format('2017-10-01', '%a')
--- 오늘은 이번달의 몇 주차인가?
 
--- 지금부터 '2014-01-01'까지의 개월 수 구하기
+-- 이번날의 첫째날 구하기. 일반화
+select now(), concat( date_format(now(), '%Y-%m'), '-01');
+
+-- 이번달의 첫째날 요일 구하기. 
+select '2017-10-01', date_format('2017-10-01', '%a')
+
+-- 이번달의 첫째날 요일 구하기.  일반화
+select concat(date_format(now(), '%Y-%m'), '-01')
+	,	 date_format(concat( date_format(now(), '%Y-%m'), '-01'), '%a');
+	
+
+-- 문제. emp 테이블에서 입사일(hiredate)과 입사일의 요일이 출력되도록 하시오.
+select hiredate, date_format(hiredate, '%a') from emp;
+
+-- 해당 월의 마지막 일을 구하기.
+select now(), last_day( now()); --내가 한거
+select curdate(), last_day( curdate()); --강사님
+
+-- 문제. emp 테이블에서 입사일(hiredate)과 입사할 달의 마지막 일을 출력되도록 하시오.
+	select hiredate,last_day(hiredate) from emp;
+	
+-- 오늘은 이번달의 몇 주차인가?
+select now(), dayofweek( now());
+
+-- 지금부터 '2014-01-01'까지의 개월 수 구하기. timestampdiff()
+select now(), '2014-01-01', timestampdiff(MONTH, now(), '2014-01-01');
+select now(), '2014-01-01', timestampdiff(YEAR, now(), '2014-01-01');
+select now(), '2014-01-01', timestampdiff(DAY, now(), '2014-01-01');
+select now(), '2014-01-01', timestampdiff(HOUR, now(), '2014-01-01');
+
+-- 지금부터 '2014-01-01'까지의 개월 수 차이를 구하기. timestampdiff()
+select now(), '2014-01-01', timestampdiff(MONTH, now(), '2014-01-01');
+
+-- 지금부터 '2014-01-01'까지의 일 수 차이를 구하기. timestampdiff()
+select now(), '2014-01-01', timestampdiff(day, now(), '2014-01-01');
 
 -- 오늘 날짜에 6개월 추가하기
+select now(), date_add(now(), INTERVAL 6 MONTH);
 
 -- 오늘 날짜에 -6개월 추가하기
+select now(), date_add(now(), INTERVAL -6 MONTH);
 
--- 지금부터 가장 가까운 수요일은 몇일후 인가?
+-- 문제. 오늘 날짜에 17년 후를 계산하시오.
+select now(), date_add(now(), INTERVAL 17 YEAR);
 
--- 지금부터 가장 가까운 수요일은 몇일인가?
+
+
 
 -- 해당 월의 마지막 일을 구하기
 
 
-
-
-
-
-
-
 -- @@@@@@@@@@
 -- 형변환 함수 
--- MySQL : convert() : date <--> character <--> number
+-- SQL 데이터 타입 날짜 date <--> 문자 character <--> 숫자 number
+-- MySQL : convert() :
 -- Oracle : to_char, to_date, to_number
 -- @@@@@@@@@@
 
--- 현재일자를 문자열로 변환 : YYYY, MM, DD
+-- 현재일자를 문자열로 변환,날짜 ->> 문자 : YYYY, MM, DD
+select now(), convert(now(), nchar(4));
+select now(), convert(now(), nchar(7));
+select now(), convert(now(), nchar(10));
 
--- 현재시간을 문자열로 변환
+-- 현재시간을 문자열로 변환, 
+select curtime(), convert(curtime(), char(5));
+select curtime(), convert(curtime(), char(8));
+
+-- 문자를 날짜로 변환. 변환 후 DATE 포맷이 된다.
+select '2017-10-16', convert('2017-10-16', DATE);
+select '17:10:15', convert('17:10:15', TIME);
+select '2017-10-16 17:10:15', convert('2017-10-16 17:10:15', DATETIME);
+
+-- 문자를 숫자로 변환
+select '-120', convert('-120', SIGNED);
+select '120', convert('120', UNSIGNED);
+select '120.124', convert('120.124', DECIMAL(10, 0));
+select '120.124', convert('120.124', DECIMAL(7, 5));
+select '120.124', convert('120.124', DECIMAL(8, 5));
+select '120.124', convert('120.124', DECIMAL(10, 5));
+-- 문자를 숫자로 변환시 숫자의 포맷 지정하기
+
+
+-- 문자를 숫자로 변환: 20,000,000.73797874857848을 DECIMAL을 이용하여 실수로 바꾸시오.
+select '20,000,000.73797874857848'
+		, replace ('20000000.73797874857848', ',', '' )
+		, convert(replace ('20000000.73797874857848', ',', '' ), DECIMAL(22, 14));
+		
+set @aaa := '20000000.73797874857848';
+set @bbb := replace(';20000000.73797874857848', ',','');
+set @ccc := length(@bbb) -1;
+select @aaa, @bbb, convert(@bbb, DECIMAL(@ccc, 14); -- 안됨.
 
 -- 통화 기호 붙이기.
 -- MySql  : 안됨.
 -- Oracle : 가능
-
-
--- 문자를 날짜로 변환. 변환 후 DATE 포맷이 된다.
-
--- 문자를 숫자로 변환
-
--- 문자를 숫자로 변환시 숫자의 포맷 지정하기
-
-
--- 문자를 숫자로 변환: 20,000,000.73797874857848 을 숫자로 바꾸시오.
-
-
-
--- @@@@@@@@@@
--- 윤달 테이블 만들기
--- @@@@@@@@@@
 
 
 -- @@@@@@@@@@
@@ -188,45 +232,91 @@ select '2017-10-01', date_format('2017-10-01', '%a')
 -- @@@@@@@@@@
 
 -- ifnull 사용법
-
-
+select ifnull (null, 1);
+select ifnull (0, 1);
+select ifnull ('0', 1);
 
 -- @@@@@@@@@@
 -- 선택 함수 : CASE 문. 자바의 연속if 와 유사
--- CASE WHEN ELSE 
+-- CASE WHEN THEN ELSE 
 -- @@@@@@@@@@ 
 
 
--- CASE WHEN ELSE
- 
 
 
 
-
+-- CASE WHEN THEN ELSE를 사용하여 부서명을 출력하시오.ㅣ
+-- deptno = 10이면 경리부
+-- deptno = 20이면 인사과 
+-- deptno = 30이면 영업부
+-- deptno = 31이면 개발팀
+-- deptno = 40이면 전산부
+select ename, deptno, CASE WHEN deptno=10 THEN '경리부'
+									WHEN deptno=20 THEN '인사과'
+									WHEN deptno=30 THEN '영업부'
+									WHEN deptno=40 THEN '전산부'
+									ELSE '나머지부'
+							  END
+from emp;
 -- @@@@@@@@@@@@@@
 -- 미션
 -- @@@@@@@@@@@@@@
--- 미션 1. substring 함수를 사용하여 9월에 입사한 사원을 출력하기. 1개
+-- 미션 1.  substring 을 사용 9월에 입사한 사원을 출력하기. 1개
+-- 오늘 날짜에서 월을 추출하려면
+select now() , substring( now(), 6, 2);
+-- 입사일에서 월을 추출하려면
+select hiredate, substring(hiredate, 6, 2) from emp; 
 
+-- 9월에 입사한 직원을 출력하시오. 
+select * from emp where substring(hiredate, 6, 2) = '09';
 
 -- 미션 2. SUBSTR 함수를 이용하여 2003년도에 입사한 사원을 검색하기. 2개
+select * from emp where  substring( hiredate, 1, 4) = '2003';
+
+
 
 -- 미션 3. 이름(ename)이 '기'로 끝나는 사원을 검색하시오. 2개
 
 
 -- 미션 4. 이름의 두 번째 글자에 '동'이 있는 사원을 검색하기. 2개
 
+select * from emp where ename like '_동%';
 
 -- 미션 5. 직급(job)에 따라 직급에 따라 급여를 인상하시오.
 -- '부장'인 사원은 5% 인상 
 -- '과장'인 사원은 10% 인상
 -- '대리'인 사원은 15% 인상 
 -- '사원'인 사원은 20% 인상
-
+select ename, job, CASE WHEN job='부장'  THEN '5% 인상'
+									WHEN job='과장' THEN '10% 인상'
+									WHEN job='대리' THEN '15% 인상'
+									WHEN job='사원' THEN '20% 인상'
+									
+							  END
+from emp;
 
 -- 미션 6. 입사일을 연도는 2자리(YY), 
 --         월은 숫자로 표시하고 
 --         요일은 약어(DY)로 출력하시오.
 -- 구글 검색을 이용 
 
+-- 여기서 안하고 다음에 다시.10/16
+-- 지금부터 가장 가까운 수요일은 몇일후 인가?  case when then else
+-- if( dayofweek(now ())<=4){
+--	4 - dayofweek(now())
+-- }
+-- else{
+--	4 + (7-dayofweek(now()))
+-- }
+select now(), dayofweek(now()) , 4 - dayofweek(now()); -- 수요일 이거나 이전인 경우
+select now(), dayofweek(now()) , 4 + (7-dayofweek(now())); -- 수요일 초과인 경우
 
+select now(), 
+dayofweek(now()), 
+CASE WHEN dayofweek( now() ) <= 4 THEN 4 - dayofweek ( now() )
+ELSE 4 + (7-dayofweek( now()))
+END as '일수';
+							  
+
+
+-- 지금부터 가장 가까운 수요일은 몇일인가?

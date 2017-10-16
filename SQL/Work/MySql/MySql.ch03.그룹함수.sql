@@ -171,7 +171,7 @@ order by sum(sal) asc;
 -- 2.2 limit 를 이용하는 방법
 -- -----------------------------------
 select max(hiredate) from emp;
-select ename, hiredate from emp where hiredate = (select max(hiredate) from emp); 
+select ename, hiredate from emp where hiredate in (select max(hiredate) from emp); 
 -- 문제 지우라 함.
 
 
