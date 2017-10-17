@@ -19,7 +19,7 @@ public class CircleTest {
        Circle c2 = new Circle();
        c2.setRadius(10);
        center = new Point(25, 75);
-       c2.setCenter(center);//==cw.setCenter(new Point(25,78));
+       c2.setCenter(center);//==c2.setCenter(new Point(25,78));
        
        //c3
        Circle c3 = new Circle(10, new Point(25, 78));
