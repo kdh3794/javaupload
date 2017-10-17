@@ -347,21 +347,7 @@ select * from emp where name;
 -- 직급이 중복되지 않게 한 번씩만 출력하시오
 insert into emp(depto, ename, job)
 				values(30, '송혜교, '과장');
-				
--- emp 테이블에서 영업부(deptno=30) 소속의 과장 송혜교의 연봉(sal)을 700으로, 
--- 커미션을(comm)을 null로 수정하는 update문을 작성하시오.
-update emp 
-set sal = 700, comm=nell
-where deptno = 30;
-and job = '과장'
-and ename = '송혜교';
 
-
--- emp 테이블에서 영업부(deptno=30) 소속의 과장 송혜교를 삭제하는 delete 문을 작성하시오.
-delete from emp
-where deptno=30
-and job='과장'
-and enmae = '송혜교'
 
 -- ########################
 -- 미션2. SEARCHING( WHERE )

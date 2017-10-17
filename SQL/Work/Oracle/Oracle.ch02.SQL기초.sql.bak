@@ -84,7 +84,6 @@ select nvl(null, 0) from dual;
 --'A and B'를 출력하시오
 select "A and B" from dual;
 
-
 --concat 을 이용하며 'A and B;fㄹ 출력하시오.
 select 'A' || 'and' || 'B' from dual;
 
