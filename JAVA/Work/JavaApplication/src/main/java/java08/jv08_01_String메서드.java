@@ -11,6 +11,7 @@ public class jv08_01_String메서드 {
         // 문자열 길이: length() . 13이 출력
         int length = prov.length();
         System.out.println(prov.length());
+        
         // 문자열 추출 : substring()
         // (2번째부터 4번째 자리까지 추출: bar)
         
