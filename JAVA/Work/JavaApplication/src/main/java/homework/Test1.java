@@ -21,7 +21,7 @@ public class Test1 {
         
         String[] sArray = prov2.split(" "); // a. 문자열 자르기 --> String 배열을 얻게 됨.
         
-        //  문자열 배열을 정수 배열로 만든다.
+        // 문자열 배열을 정수 배열로 만든다.
         int[] iArray = new int[sArray.length];
         for (int i = 0; i <= sArray.length - 1; i = i + 1) {
             
