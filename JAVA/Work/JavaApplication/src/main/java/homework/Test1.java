@@ -39,6 +39,9 @@ public class Test1 {
         
         // d. 정수배열에서 최대값을 찾는다.
         System.out.println(iArray[iArray.length - 1]);
+       
+        System.out.println(iArray);
+        
         
     }
 }

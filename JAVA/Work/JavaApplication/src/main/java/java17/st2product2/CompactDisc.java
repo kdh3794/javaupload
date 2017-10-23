@@ -13,7 +13,7 @@ public class CompactDisc extends Product {
     
    public CompactDisc(int id, String describe, String producer, 
            int price,String title, String singer) {
-       super(id, describe, producer, price);
+       super(id, describe, producer, price, title, singer);
        this.title = title;
        this.singer = singer;
    }

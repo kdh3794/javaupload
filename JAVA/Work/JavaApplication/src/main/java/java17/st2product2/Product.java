@@ -66,4 +66,9 @@ public abstract class Product {
         System.out.println("생산자=" + 생산자);
         System.out.println("가격=" + 가격);
     }
+
+    public void show() {
+        // TODO Auto-generated method stub
+        
+    }
 }
