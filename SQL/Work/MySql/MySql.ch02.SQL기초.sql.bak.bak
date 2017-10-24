@@ -318,7 +318,6 @@ select * from single_star;
                                     
 -- 교집합 구하기. 공통 부문만 출력 : GROUP_STAR , SINGLE_STAR.  
 -- inner join 또는 equip join 사용 
-
 select * from GROUP_STAR inner join SINGLE_STAR 
 on GROUP_STAR.name = SINGLE_STAR.nickname ;
 
