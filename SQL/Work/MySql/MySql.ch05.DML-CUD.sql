@@ -252,3 +252,32 @@ delete from emp
 -- select * from emp 
 where deptno = (select deptno from dept where dname ='경리부');
 
+-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+-- 데이터 MERGE 하기.
+-- MERGE 기본 문법
+-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+-- 50번 부서의 사원(job) 송중기를 insert나 update하는 merge 문을 작성하시오.
+select @empno := max(empno) from emp;
+insert into emp (empno, ename, deptno, job)
+				values(@empno   ,'송중기', 50, '사원') -- 여기까지만 실행하면 duplicate 오류.  중복오류임.
+on duplicate key
+update emp set ename = '송중기', deptno=50, job='사원' -- emp set	은 merge구문에서 사용하지 않음.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
