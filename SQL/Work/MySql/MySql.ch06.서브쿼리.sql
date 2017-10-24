@@ -72,7 +72,7 @@ select * from emp where deptno!=20 or deptno!= 21 ;
 
 -- 서브쿼리를 이용하여  인천에 근무하지 않는 직원을 출력하시오.
 select * from emp
-where dept in (select distinct deptno from emp where loc != '인천');#내가 한거 -> 실행이 안됨. 
+where dept not in (select distinct deptno from emp where loc = '인천');#내가 한거 -> 실행이 안됨. (not 붙였음. 이제 될걸)
 
 select * from emp where deptno not in(20, 21);
 -- -------------------- 

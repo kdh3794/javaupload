@@ -225,7 +225,7 @@ where deptno = 31;
 -- 미션 5. emp 테이블에서 급여가 500미만인 사원들의 급여를 50%씩 인상(업데이트)하시오.
 update emp
 set sal = sal + sal*0.5
-
+mysql
 -- select * from emp
 where sal < 500;
 
@@ -238,10 +238,17 @@ insert into emp( empno, ename) values(@maxemp + 1, '아이린');
 insert into emp( empno, ename) values(@maxemp + 2, '강민경');
 insert into emp( empno, ename) values(@maxemp + 3, '이해리');
 
-select * from emp;
--- 미션 7. emp 테이블에서 직급(job)이 정해지지 않은 직원을 삭제하시오.
 
+-- 미션 7. emp 테이블에서 직급(job)이 정해지지 않은 직원을 삭제하시오.
+delete from emp
+-- select * from emp
+where job = '' or job is null;
 
 -- 미션 8. emp 테이블에서 경리부에 소속된 사원들만 삭제하시오.
+select * from dept where dname ='경리부';
+select * from emp where deptno = 10;
 
+delete from emp
+-- select * from emp 
+where deptno = (select deptno from dept where dname ='경리부');
 
