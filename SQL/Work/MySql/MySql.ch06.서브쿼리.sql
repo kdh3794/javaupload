@@ -230,3 +230,13 @@ select * from emp where mgr = 1008;
 select ename, sal from emp
 where mgr < (select empno from emp where ename = '감우성')
 and deptno = 30;
+
+-- 서브 쿼리를 사용하여 dept 테이블에서 31번 부서의 부서의 위치(loc)를 40번 부서의
+-- 위치로 바꾸시오. 
+update dept
+set loc = (select loc from dept where deptno = 40)
+				where deptno = 31;
+				
+-- 11번 update dept set loc = '수원' where deptno = 31; -- 답 이상
+-- 12번 insert into emp(empno, ename)
+	-- values ((select max(empno)+1 from emp), '아이린');

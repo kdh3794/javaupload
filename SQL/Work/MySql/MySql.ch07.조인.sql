@@ -154,11 +154,19 @@ select * from dept right join emp on dept.deptno = emp.deptno
 -- self join :  자신에게 자기를 조인을 하는 방법
 -- @@@@@@@ 
 
--- inner join을 이용하여 담당 매니저 찾기. emp.mgr
+
+select ename, empno 사원번호, mgr 매니저번호  from emp;
+
+-- inner join을 이용하여 담당 매니저 찾기. 매니저 정보는  emp.mgr에 있음.
+select 나의.ename,나의.empno,  나의.mgr, 매니저.ename, 매니저.empno
+from emp 나의 inner join emp 매니저
+					on 나의.mgr = 매니저.empno; -- inner join을 ,로 on을 where로 바꾸면 equi join
 
 
--- equi self join을 이용하여 담당 매니저 찾기
-
+-- equi join을 이용하여 담당 매니저 찾기
+select 나의.ename,나의.empno,  나의.mgr, 매니저.ename, 매니저.empno
+from emp 나의 , emp 매니저
+				where 나의.mgr = 매니저.empno;
 
        
        
@@ -166,32 +174,124 @@ select * from dept right join emp on dept.deptno = emp.deptno
 -- 미션 06. 
 -- @@@@@@@@@@
 -- 1. 경리부서에 근무하는 사원의 이름과 입사일을 출력하시오. 3개. 서브쿼리
+-- 1-1. dept테이블에서 '경리부' 찾기
+-- 1-2. 1-1
+
+-- 1.1 서브쿼리 방식
+select * from dept where dname = '경리부';
+select ename, hiredate, from emp where deptno = 10;
+
+select ename, hiredate
+from emp 
+where deptno = (select deptno from dept where dname = '경리부');
+
+-- 1.2 join 방식
+select emp.ename, emp.hiredate
+from emp inner join dept on emp.deptno = dept.deptno
+where dname = '경리부'
 
 
 
+select *
+	,(select dname from dept where deptno = emp.deptno) 
+	,(select ename from dept where deptno = emp.deptno)
+	,(select hiredate from dept where deptno = emp.deptno)
+	from emp
+	where dname = '경리부'; -- 내가 한거 이상함.
 
 -- 2. 인천에서 근무하는 직원명(ename), 입사일(hiredate), 급여(sal) 그리고 부서명(dname)을 출력하는 SQL문을 작성하시오. 3개. 조인
+select * from dept where loc = '인천'
+select ename, hiredate from dept where loc = '인천'; -- 내가 한거 이상함.
+
+-- 2.1 서브쿼리 방식
+select deptno from dept where loc = '인천' -- 20, 21
+select ename, hiredate, sal, (select dname from dept where dept.deptno = emp.deptno) 
+	from emp 
+	where deptno in (select deptno from dept where loc = '인천' ) -- 강사님이 한거 -- ()안에 인천 쿼리 넣음. 위에 인천 실행하면 20, 21나오는데 원래 그 값 넣는거라서.
+																											 -- 서브쿼리 이용해서 넣는거임. 그런데 안좋은 방법. 
+select * from emp;
+-- 2.2 join방식
+select emp.ename, emp.hiredate, emp.sal, dapt.dname
+	from emp inner join dept on emp.deptno=dept.deptno
+	where dept.loc = '인천'; --실행안됨
 
 
 -- 3. 인천에서 근무하는 직원의 수를 출력하시오. 6개
+-- 3.1 서브쿼리 방식
+select deptno from dept where loc='인천';
+select count(*) from emp where deptno in (20,21);
 
+select count(*) from emp where deptno in( select deptno from dept where loc='인천');
 
+-- 3.2 join 방식
+select count(*)
+	from emp inner join dept on emp.deptno = dept.DEPTNO
+	where dept.loc = '인천';
 
 
 -- 4. 직급(emp.job)이 과장인 직원의 이름(emp.ename), 부서명(dept.dname)을 출력하시오. 3개
+-- 4.1 서브 쿼리 방식
+select ename, (select dname from dept where dept.deptno = emp.deptno) dname
+from emp
+where job = '과장'
+
+select emp.ename, dept.dname from dept where emp.job = '과장'; -- 내가한거  안됨.
+
+-- 4.2 join 방식
+select emp.ename, dept.dname
+	from emp join dept on dept.deptno = emp.deptno
+	where emp.job = '과장'
 
 
 -- 5. 직속 상관이 "감우성"인 직원들의 이름(ename),직급(job)를 출력하시오. 6개
+-- 5.1 서브 쿼리 방식
+select empno from emp where ename = '감우성';
+select * from emp where mgr = 1008;
 
+select ename, job from emp
+where mgr = (select empno from emp where ename = '감우성')
 
+-- 5.2 join 방식
+select * from emp 나의 join emp 매니저 on 나의.mgr = 매니저.empno
+where 매니저.ename = '감우성';
 
 
 -- 6. "감우성"과 같은 근무지에서 일하는 직급이 '사원'인 직원만 출력하시오.4개
+-- 6.1 서브 쿼리 방식
+select a.deptno from emp a where a.ename = '감우성';
+select b.loc from dept b where b.deptno = 30;
+select c.deptno from dept c where c.loc = '용인';
+select d.* from emp d where d.job = '사원' and d.deptno in (30,31);
 
+
+select * from emp
+where job='사원'
+and deptno in (select deptno from dept
+					where loc  =  (select loc from dept
+										where deptno = (select deptno from emp where ename = '감우성')
+										)
+										);
+									
+										
+-- 6.2 join 방식
+select a.deptno from emp a where a.ename = '감우성';
+select b.loc from dept b where b.deptno = 30;
+select c.deptno from dept c where c.loc = '용인';
+select d.* from emp d where d.job = '사원' and d.deptno in (30,31);
+ 										
+select d.*
+					from emp a inner join dept b on b.deptno = a.deptno
+                           inner join dept c on c.loc = b.loc
+									inner join emp d on d.deptno = c.deptno
+									where a.ename = '감우성 '
+									and d.job = '사원';-- 6번 문제 지우라함. 복습도 하지 말라하.ㅁ 처음에 배우는 거 치고 복잡함.
 
 
 -- 7. '이문세'와 동일한 직급을 가진 사원을 출력하시오. 4개
+-- 7.1 서브 쿼리 방식
 
+-- 7.2 join 방식
+ 
 
 
 

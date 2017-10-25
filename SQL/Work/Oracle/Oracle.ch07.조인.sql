@@ -7,19 +7,39 @@
 
  
  -- emp 테이블에 p 라는 별칭 부여하시오.
+ select * from emp ;
+ select emp.* from emp ;
+ 
+ select * from emp p;
+ select p.* from emp p;
  
  
  -- emp 테이블에 p 라는 별칭 부여하고 ename은 이름으로, job 은 직업으로 출력하시오.
+select ename 이름, job 직업 from emp p;
 
 -- emp 테이블에서 이름(enam)이 '이문세'인 사람을 출력하시오.
 
 -- dept 테이블에서 deptno 가 10 인 부서를 출력하시오.
 
--- 서브쿼리를 이용해서 '이문세'의 데이터와 부서명을 함께 출력하시오.
 
+-- @@@@ 
+--  join 이 필요한 문제
+-- @@@@ 
+-- 서브쿼리를 이용해서 '이문세'의 데이터와 부서명을 함께 출력하시오.
+select dname from dept; -- dname이 부서명.
+select *
+    --  ,(select dname from dept where deptno = emp.deptno)
+    --  ,(select dname from dept where deptno = emp.deptno)
+from emp
+where ename = '이문세';-- 안됨. 위에 서브쿼리가 맞는지 확인.
 
 
 -- 서브쿼리를 이용해서 '이문세'의 정보와 부서명 그리고 위치를 출력하시오.
+select * from emp inner join dept
+          on  emp.deptno = dept.deptno
+          where ename = '이문세'
+
+select ename
 
 -- 서브쿼리를 이용해서 여러 컬럼을 표시할 때 문제 발생됨.
 -- 이런 경우에는 조인을 이용하여 쉽게 해결이 가능한다.
@@ -33,15 +53,26 @@
 -- inner join 
 -- emp 와 dept 테이블 inner join 하기
 -- @@@@@@@ 
-
--- 직원 정보외 소속된 부서명을 출력하시오.
+select * from emp;
+-- 직원 정보(emp)와 소속된 부서명(dept.dname)을 출력하시오.
+select emp.* , dept.dname from emp join dept
+    on emp.deptno = dept.deptno; -- 실행 결과창에서 deptno까지가 emp꺼고 dname은 dept
   
 -- 위의 SQL을 수정하시오. 
 -- dept 테이블에 d라는 별칭을, emp 테이블에는 e라는 별칭을 부여하도록 수정하시오.
 
+select e.*, d.dname
+  from emp e join dept d on e.deptno = d.deptno;
+
 -- @@@@@@@ 
 -- equi join 
 -- @@@@@@@ 
+  
+-- Equi Join을 이용하여 직원의 모든 정보(emp)와 소속된 부서명(dept.dname)만을 출려하시오.
+-- dept --> d , emp-->e  테이블 별칭을 부여하도록 한다.  
+select e.*m d.dname
+from dept d, emp e
+where d.deptno = e.deptno;--안됨
   
 -- 위의 SQL에서 테이블에 별칭을 부여하도록 수정하시오. 
 -- dept --> d , emp-->e .
@@ -52,9 +83,13 @@
 -- @@@@@@@ 
 
 -- dept 테이블을 기준으로 emp 테이블의 데이터를 합치시오.
+select * from dept left join emp
+    on dept.deptno = emp.deptno
 
 -- dept - emp 의 차집합을 구하시오. 3개의 출력
-
+select * from dept left join emp
+    on dept.deptno = emp.deptno
+    where emp.empno is null;
 
 
 -- @@@@@@@ 
@@ -62,7 +97,8 @@
 -- @@@@@@@    
 
 -- emp 테이블을 기준으로 dept 테이블의 데이터를 합치시오.
-
+select * from emp left join dept
+			on emp. deptno = dept.deptno; -- 위에거랑 똑같은데 emp를 먼저 하면됨. 기준 테이블이 앞쪽.
 
 
 
