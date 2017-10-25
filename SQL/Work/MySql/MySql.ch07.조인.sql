@@ -292,9 +292,10 @@ select d.*
 
 -- 7.2 join 방식
  
+select empno from emp;
+select * from emp;
 
-
-
+insert into emp(empno, ename) values ('아이린');
 -- 8. 부서별로 가장 급여를 많이 받는 사원의 
 --    사원번호, 사원이름, 급여, 부서번호, 부서명를 출력하시오. 8개
 

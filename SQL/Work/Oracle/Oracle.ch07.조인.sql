@@ -39,7 +39,8 @@ select * from emp inner join dept
           on  emp.deptno = dept.deptno
           where ename = '이문세'
 
-select ename
+select dname from dept 
+where deptno = (select deptnofrom emp where ename='이문세');
 
 -- 서브쿼리를 이용해서 여러 컬럼을 표시할 때 문제 발생됨.
 -- 이런 경우에는 조인을 이용하여 쉽게 해결이 가능한다.
