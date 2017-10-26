@@ -288,35 +288,146 @@ select d.*
 
 
 -- 7. '이문세'와 동일한 직급을 가진 사원을 출력하시오. 4개
+select a.job from emp a where a.ename = '이문세';
+select b.*   from emp b where b.job = '부장';
+
+
 -- 7.1 서브 쿼리 방식
+select * from emp where job = (select job from emp where ename = '이문세');
+
 
 -- 7.2 join 방식
+select b.*
+from emp a inner join emp b on b.job = a.job
+where a.ename = '이문세';
+
+
+-- 8. 부서별로 가장 급여를 많이 받는 사원의 
+--    사원번호, 사원이름, 급여, 부서번호, 부서명를 출력하시오. 8개
+select deptno, max(sal) from emp group by deptno;
+select deptno, ename,sal, deptno, '' dname \
+from emp
+where (deptno = 10 and sal = 520)
+	or (deptno = 20 and sal = 1000)
+	or (deptno = 21 and sal = 1000)
+	or (deptno = 30 and sal = 500)
+	or (deptno = 31 and sal = 250)
+	or (deptno = 50 and sal is null)
+	
+	
+-- 8.1 서브쿼리 방식
+
+select deptno, ename,sal, deptno, (select dname from dept where dept.deptno = emp.deptno) dname 
+from emp
+where (deptno , sal) in (select deptno, max(sal) from emp group by deptno);
+
+-- 8.2 위의 쿼리에서 select 서브 쿼리를 join 방식으로 바꾸시오.
+select emp.deptno, emp.ename,emp.sal, dept.dname
+from emp join dept on dept.deptno=emp.deptno
+where (emp.deptno , emp.sal) in (select deptno, max(sal) from emp group by deptno);
+
+
+select b.*, d.dname
+  from (select deptno, max(sal)xsal from emp
+         group by deptno) a, emp b, dept d
+ where a.deptno = b.deptno
+   and a.xsal   = b.sal
+   and b.deptno = d.deptno -- 킹어르신 소스 , 위에 소스대로 하면 좋지 않다.
+   
+;
+-- 9. 직급(job) 과장이 속해 있는 부서의 부서번호와 부서명, 위치 
+--    그리고 그 부서에 속한 사원들의 정보를 출력하시오. 9개
+
+select e.*, d.dname, d.loc
+  from emp e, dept d
+ where e.deptno in(select distinct deptno from emp
+                    where job = '과장')
+   and e.deptno = d.deptno
+;
+-- 킹 어르신 소스
+
+
+-- 9.1 서브쿼리 방식
+select dept.*, (select * from emp where emp.deptno = dept.deptno)
+from dept
+where deptno in (select distinct deptno from emp where job = '과장'); -- 실행 안됨. 강사님도 안됨.
+
+-- 9.2join 방식
+select dept.*, emp.*
+from dept join emp on emp.deptno = dept.deptno
+where dept.deptno in (select distinct deptno from emp where job = '과장');
+
+
+-- 10. 과장보다 최대 급여(같은 것은 제외)보다 많은 급여를 받는 직원들의 이름, 부서명, 직급, 급여를 출력하되
+--     과장은 출력하지 마시오. 5개
+select max(sal) from emp a where a.job = '과장';
+select b.* from emp b where b.sal > 500 and b.job != '과장';
+
+select e.*, d.dname
+  from emp e, dept d
+ where e.sal > (select max(sal) from emp
+                 where job = '과장')
+   and e.deptno = d.deptno
+   and e.job   != '과장'
+;-- 킹어르신 소스
+
+-- 10.1 서브쿼리 방식
+select *, (select dname from dept where dept.deptno = emp.deptno) dname
+from emp
+where sal > (select max(sal) from emp where job='과장') and job != '과장';
+
+-- 10.2 join 방식
+select emp.*, dept.dname
+from emp join dept on emp.deptno = dept.deptno
+where emp.sal > (select max(sal)  from emp a where a.job='과장')
+and emp.job !='과장';
+
+select e.*, d.dname
+  from emp e, dept d
+ where e.sal > (select max(sal) from emp
+                 where job = '과장')
+   and e.deptno = d.deptno
+;-- 킹어르신 소스 
+
+
+
+-- 11. 부서별로 과장보다 많은 급여(같은 것은 제외)를 받는 같은 부서에 근무하는 
+--     직원들의 이름, 부서명, 직급, 급여를 출력하되 과장은 출력하지 마시오. 1개
+select deptno, max(sal) from emp where job='과장' group by deptno;
+select * from emp where (deptno=10 and sal > 500)
+						or    (deptno=30 and sal > 500) 
+						and job != '과장';
+						
+						
+-- 11.1 서브쿼리 방식. 보류
+
+
+
+-- 11.2 join 방식
+select emp.ename, dept.dname, emp.job, emp.sal
+from emp join dept on emp.deptno=dept.deptno
+	join (select deptno, max(sal) sal from emp where job ='과장' group by deptno)c
+where emp.job != '과장'
+and ( emp.deptno=c.deptno and emp.sal > c.sal)
+
+
+select b.*, d.dname
+  from (select deptno, max(sal)xsal from emp
+         where job = '과장'
+         group by deptno) a, emp b, dept d
+ where a.deptno = b.deptno
+   and a.xsal   < b.sal
+   and b.deptno = d.deptno
+   and b.job   != '과장'
+;-- 킹 어르신
+
+
+
+
+
+
  
 select empno from emp;
 select * from emp;
 
 insert into emp(empno, ename) values ('아이린');
--- 8. 부서별로 가장 급여를 많이 받는 사원의 
---    사원번호, 사원이름, 급여, 부서번호, 부서명를 출력하시오. 8개
-
--- 8.1 서브쿼리 방식
-
-
-
--- 8.2 join 방식
-
-
-
-
--- 9. 직급(job) 과장이 속해 있는 부서의 부서번호와 부서명, 위치 
---    그리고 그 부서에 속한 사원들의 정보를 출력하시오. 9개
-
-
-
--- 10. 과장보다 많은 급여(같은 것은 제외)를 받는 직원들의 이름, 부서명, 직급, 급여를 출력하되
---     과장은 출력하지 마시오. 5개 or 7개
-
-
--- 11. 부서별로 과장보다 많은 급여(같은 것은 제외)를 받는 같은 부서에 근무하는 
---     직원들의 이름, 부서명, 직급, 급여를 출력하되 과장은 출력하지 마시오. 1개
-
