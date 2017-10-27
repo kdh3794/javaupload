@@ -268,9 +268,9 @@ select * from emp
 where job='사원'
 and deptno in (select deptno from dept
 					where loc  =  (select loc from dept
-					where deptno = (select deptno from emp where ename = '감우성')
-						)
-						);
+										where deptno = (select deptno from emp where ename = '감우성')
+										)
+										);
 									
 										
 -- 6.2 join 방식
