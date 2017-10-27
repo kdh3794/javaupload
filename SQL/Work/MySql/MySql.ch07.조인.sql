@@ -211,9 +211,9 @@ select ename, hiredate, sal, (select dname from dept where dept.deptno = emp.dep
 																											 -- 서브쿼리 이용해서 넣는거임. 그런데 안좋은 방법. 
 select * from emp;
 -- 2.2 join방식
-select emp.ename, emp.hiredate, emp.sal, dapt.dname
+select emp.ename, emp.hiredate, emp.sal, dept.dname
 	from emp inner join dept on emp.deptno=dept.deptno
-	where dept.loc = '인천'; --실행안됨
+	where dept.loc = '인천';
 
 
 -- 3. 인천에서 근무하는 직원의 수를 출력하시오. 6개

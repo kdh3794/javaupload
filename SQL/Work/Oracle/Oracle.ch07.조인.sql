@@ -149,28 +149,64 @@ select * from emp left join dept
 -- self join :  자신에게 자기를 조인을 하는 방법
 -- @@@@@@@ 
 
+select ename, empno 사원번호, mgr 매니저번호 from emp;
 -- inner join을 이용하여 담당 매니저 찾기. emp.mgr
+select 나의.ename, 나의.empno, 나의.mgr, 매니저.ename, 매니저.empno
+from emp 나의 inner join emp 매니저
+on 나의.mgr = 매니저.empno;
 
-
--- equi self join을 이용하여 담당 매니저 찾기
-
-
+-- equi join을 이용하여 담당 매니저 찾기
+select 나의.ename, 나의.empno, 나의.mgr, 매니저.ename, 매니저.empno
+from emp 나의, emp 매니저
+where 나의.mgr = 매니저.empno;
        
        
 -- @@@@@@@@@@
 -- 미션 06. 
 -- @@@@@@@@@@
 -- 1. 경리부서에 근무하는 사원의 이름과 입사일을 출력하시오. 3개. 서브쿼리
+-- 1-1 dept테이블에서 '경리부' 찾기
+-- 1-2 1-1
 
+-- 1.1 서브쿼리 방식
+select * from dept where dname = '경리부';
+select enmae, hiredate, from emp where deptno = 10;
 
+select ename, hiredate
+from emp
+where deptno = (select deptno from dept where dname = '경리부');
 
+--1.2 join 방식
+select emp.ename, emp.hiredate
+from emp inner join dept on emp.deptno = dept.deptno
+where dname = '경리부'
 
 -- 2. 인천에서 근무하는 직원명(ename), 입사일(hiredate), 급여(sal) 그리고 부서명(dname)을 출력하는 SQL문을 작성하시오. 3개. 조인
+select * from dept where loc = '인천'
 
+--2.1 서브쿼리 방식
+select deptno from dept where loc='인천'
+select ename, hiredate, sal, (select dname from dept where dept.deptno = emp.deptno)
+from emp
+where deptno in (select deptno from dept where loc = '인천')
+
+select * from emp;
+-- 2.2 join 방식
+select emp.ename, emp.hiredate, emp.sal, dept.dname
+from emp inner join dept on emp.deptno=dept.deptno
+where dept.loc = '인천';
 
 -- 3. 인천에서 근무하는 직원의 수를 출력하시오. 6개
+-- 3.1 서브쿼리 방식
+select deptno from dept where loc='인천';
+select count(*) from emp where deptno in (20,21);
 
+select count(*) from emp where deptno in(select deptno from dept where loc='인천');
 
+--3.2 join 방식
+select count(*)
+from emp inner join dept on emp.deptno = dept.DEPTNO
+where dept.loc = '인천';
 
 
 -- 4. 직급(emp.job)이 과장인 직원의 이름(emp.ename), 부서명(dept.dname)을 출력하시오. 3개
