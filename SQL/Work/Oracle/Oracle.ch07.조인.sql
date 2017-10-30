@@ -107,7 +107,6 @@ select * from emp left join dept
 			on emp. deptno = dept.deptno; -- 위에거랑 똑같은데 emp를 먼저 하면됨. 기준 테이블이 앞쪽.
 
 
-
 -- ----------
 -- auth(부모테이블), book(자식테이블) 테이블에서 left join 구하기
 -- ----------
@@ -210,19 +209,70 @@ where dept.loc = '인천';
 
 
 -- 4. 직급(emp.job)이 과장인 직원의 이름(emp.ename), 부서명(dept.dname)을 출력하시오. 3개
+--4.1 서브쿼리 방식
+select ename, (select dname from dept where dept.deptno = emp.deptno) dname
+from emp
+where job = '과장'
+
+--4.2 join방식
+select emp.ename, dept.dname
+  from emp join dept on dept.deptno = emp.deptno
+  where emp.job = '과장'
 
 
 -- 5. 직속 상관이 "감우성"인 직원들의 이름(ename),직급(job)를 출력하시오. 6개
+-- 5.1 서브 쿼리 방식
+select empno from emp where ename = '감우성';
+select * from emp where mgr = 1008;
 
+select ename, job from emp
+where mgr = (select empno from emp where ename = '감우성');
+
+-- 5.2 join 방식
+select * from emp 나의 join emp 매니저 on 나의.mgr = 매니저.empno
+where 매니저.ename = '감우성';
 
 
 
 -- 6. "감우성"과 같은 근무지에서 일하는 직급이 '사원'인 직원만 출력하시오.4개
+-- 6.1 서브쿼리 방식
+select a.deptno from emp a where a.ename = '감우성';
+select b.loc from dept b where b.deptno = 30;
+select c.deptno from dept c where c.loc = '용인';
+select d.* from emp d where d.job = '사원' and d.deptno in (30,31);
 
+
+select * from emp
+where job = '사원'
+and deptno in (select deptno from dept
+        where loc = (select loc from dept 
+        where deptno = (select deptno from emp where ename = '감우성')
+       ));
+
+
+
+-- 6.2 join 방식
+select a.deptno from emp a where a.ename = '감우성';
+select b.loc from dept b where b.deptno = 30;
+select c.deptno from dept c where c.loc = '용인';
+select d.* from emp d where d.job = '사원' and d.deptno in (30,31);
+
+select d.*
+      from emp a inner join dept b on b.deptno = a.deptno
+      inner join dept c on c.loc = b.loc
+      inner join emp d on d.deptno = c.deptno
+      where a.ename = '감우성'
+      and d.job = '사원';
 
 
 -- 7. '이문세'와 동일한 직급을 가진 사원을 출력하시오. 4개
+select a.job from emp a where a.enmae = '이문세';
+select b.*  from emp b where b.job = '부장';
 
+--7.1 서브 쿼리 방식
+select * from emp where job = (select job from emp where ename = '이문세');
+
+--72. join 방식
 
 
 

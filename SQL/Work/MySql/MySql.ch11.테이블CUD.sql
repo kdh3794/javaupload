@@ -103,48 +103,129 @@ show columns from dept01;
 
 -- 테이블 이름 바꾸기
 -- dept01 을 dept_new로 바꾸시오.
+rename table dept01 to dept_new ;
+show tables; -- mysql에서만 가능
 
--- 테이블 구조와 데이터를 복제
--- dept 테이블을 복제해서 dept02 테이블을 만드시오.
--- 테이블이 없는 경우에 테이블과 데이터를 복제 하는 방법
--- CREATE TABLE 새로만들테이블명 AS SELECT * FROM 복사할테이블명;
+-- @@@@@@@@@
+-- 테이블 복제
+-- 테이블 구조와 데이터를 복제 : create table 새로만들 테이블명 as select * from 복사할테이블 명.
+-- 테이블 구조만 복제 : create table 새로만들테이블명 like 복사할 테이블명;
+-- 테이블 복제시 제약 조건은 복제 되지 않는다.
 
--- 테이블 구조만 복제
--- dept 테이블 구조를 복제해서 dept03 테이블을 만드시오.
+-- dept 테이블의 구조와 데이터를  복제해서 dept02 테이블을 만드시오.
+
+create table dept02 as select * from dept;
+show tables;
+show columns from dept02;
+select * from dept02;
+
+
+-- dept 테이블 구조만 복제해서 dept03 테이블을 만드시오. 데이터는 복제하지 마시오.
+create table dept03 like dept ;
+show tables;
+show columns from dept03;
+select * from dept03;
 
 
 -- 문제. dept 테이블에 auto_increment를 갖는 pid 컬럼 를 추가하시오.
--- primary key 삭제
+-- auto_increment로 설정하려면 반드시 key가 되어야 한다.
 -- pid 컬럼 추가.
+-- pid 컬럼에 key 추가
+alter table dept drop column pid; 
+alter table dept add column           pid int(11) not null auto_increment
+					, add unique key ukpid(pid);
+show columns from dept;
 
--- 문제. dept 테이블을 복제해서 dept11 테이블을 만드시오.
--- 테이블 복제후 auto_increment 조건을 pid 컬럼에 설정하시오.
+-- 문제. emp 테이블의 구조와 데이터를  복제해서 dept11 테이블을 만드시오.
+-- 테이블 목록 출력
+-- 컬럼 목록 출력
+-- 데이터 출력
+create table dept11 as select * from emp;
+show tables;
+show columns from dept11;
+select * from dept11;
 
--- 문제. dept 테이블을 복제해서 dept12 테이블을 만드시오.
--- 테이블 복제후 auto_increment 조건을 pid 컬럼에 설정하시오.
 
--- 문제. dept11 테이블은 delete을 사용하여 데이터를 제거하시오.
+-- 문제. emp 테이블의 구조만  복제해서 dept12 테이블을 만드시오.
+-- 테이블 목록 출력
+-- 컬럼 목록 출력
+-- 데이터 출력
+create table dept12 like emp ;
+show tables;
+show columns from dept12;
+select * from dept12;
+
+
+-- @@@@@@@
+-- 테이블 데이터 삭제
+--  delete : 테이블 상태 유지 . auto_increment 정보가 유지됨.
+-- truncate : 테이블 상태 초기화. auto_increment 정보가 초기화됨.
+-- @@@@
+
+
+-- tbtest를 만드시오.
+-- pid : 정수. not null, 자동 증가값
+-- value : 문자열
+
+drop table tbtest;
+create table tbtest(
+	pid int(11) not null auto_increment primary key
+	, val nvarchar(1000)
+	);
+
+insert into tbtest( pid, val)
+				values ( 5, 'a') 
+				, ( 6, 'b') 
+				, ( 7, 'c') 
+				, ( 8, 'd') ;
+				
+			
+select * from tbtest;
+-- e, f, g, h를 한번에 입력하는 insert문을 작성하시오.
+insert into tbtest(val) values('e')
+								, ('f')
+								, ('g')
+								, ('h');
+									
+delete from tbtest;
+select * from tbtest;
+insert into tbtest(val) values('a1');
+select * from tbtest;
+
+-- 문제 tbtest 테이블에서 truncate을 사용하여 데이터를 제거한 후
+--  tbtest 테이블에 a2값을 입력
+truncate tbtest;            -- delete는 기존의 테이블 정보가 그대로 유지 truncate는 기존의 테이블 정보가 삭제.
+select * from tbtest;
+insert into tbtest(val) values('a2');
+select * from tbtest;
+
+
 -- delete   방식:  auto_increment 컬럼 초기화 안됨
+-- 문제. dept11 테이블은 delete을 사용하여 데이터를 제거하고 디자이너에서 값을 입력
+-- 
 
 -- 문제. dept12 테이블은 truncate을 사용하여 데이터를 제거하시오.
 -- truncate 방식:  auto_increment 컬럼 초기화 됨
 
 
-
-
-
---########################
+-- ########################
 -- Database 목록 조회
---########################
+-- MySQL : show DB명
+-- Oracle : 
+-- ########################
+show databases;
 
 
-
---########################
+-- ########################
 -- 테이블 목록 조회 
---########################
+-- MySQL : show tables;
+-- Oracle : 
+-- ########################
+show tables;
 
-
---########################
+-- ########################
 -- 컬럼 목록 조회
---########################
-
+-- MySQL : show columns from 테이블명;
+-- Oracle : 
+-- ########################
+show columns from dept;
