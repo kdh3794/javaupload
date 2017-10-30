@@ -22,6 +22,7 @@
 -- ######################################2
 
 -- dept01 테이블을 삭제하시오.
+
 -- MySQL  : DROP TABLE if exits 테이블명 ;
 -- Oracle : BEGIN EXECUTE IMMEDIATE 'DROP TABLE dept01'; 
 --          EXCEPTION WHEN OTHERS THEN NULL; 
@@ -40,9 +41,28 @@
 -- birthtime : 생시. 시간만 저장.
 -- age       : 정수. 999 까지만 저장가능하게. 
 -- height    : 실수. 정수부분은 3자리, 소수부분은 2자리까지.
+create table dept01(
+     ename     varchar2(10)
+    ,job       varchar2(20)
+    ,email     varchar2(50)
+    ,address   varchar2(100)
+    ,sex       char(1) check(sex in ('F', 'M'))
+    ,phone     varchar(15)
+    ,birthday  date
+    ,birhtime  date
+    ,age       number(3, 0)
+    ,height    number(3, 2)
+    ); 
+
+select * from dept01;
+    
+    select * from dept01;
+
 
 -- dept01 테이블을 삭제하시오.
-
+begin execute immediate 'drop table dept01';
+exception when others then null;
+end;
 -- @@@@@@
 -- dept01 테이블을 테이블 디자이너를 이용하여 추가하시오.
 -- 
@@ -65,12 +85,19 @@
 -- dept01 테이블을 수정하시오.
 -- email 컬럼에 not null 을 설정하시오.
 -- @@@@@@
+alter table dept01 modify email varchar(50) not null;
+show columns from dept01;
 
 -- @@@@@@
 -- dept01 테이블에 insert를 이용하여 데이터를 입력하시오. 
 -- ename: abc, 나머지 컬럼 값은 null로 입력
 -- email 때문에 에러 발생
 -- @@@@@@
+insert into dept01(ename, email)
+        values ('abc', '');
+        
+        select * from dept01;
+
 
 -- @@@@@@
 -- 문제. dept01 테이블에 salary 컬럼을 추가하되

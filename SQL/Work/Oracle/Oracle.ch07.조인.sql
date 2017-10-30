@@ -8,6 +8,7 @@
  
  -- emp 테이블에 p 라는 별칭 부여하시오.
  select * from emp ;
+ 
  select emp.* from emp ;
  
  select * from emp p;
