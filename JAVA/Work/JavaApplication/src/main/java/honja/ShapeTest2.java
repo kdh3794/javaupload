@@ -1,4 +1,4 @@
-package homework;
+package honja;
 
 import java.awt.Rectangle;
 

@@ -1,4 +1,4 @@
-package homework;
+package honja;
 
 public class Sumsum {
     private int x;

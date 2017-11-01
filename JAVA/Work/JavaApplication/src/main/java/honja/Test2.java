@@ -1,4 +1,4 @@
-package homework;
+package honja;
 
 public class Test2 {
     public static void main(String[] args) {
