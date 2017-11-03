@@ -33,12 +33,18 @@
 
 
 -- dept01 테이블을 삭제하시오.
+drop table dept01;
 
 -- dept 테이블을 복제해서 dept01 테이블을 생성하시오.
-
+create table dept01 as select * from dept;
 
 -- dept01 테이블에 pkid 컬럼을 추가히고 auto_increment로 설정하시오. 
+alter table dept01 add column pkid int(11) primary key auto_increment;  
+alter table dept01 add column pkid number(11);
 
+
+
+	create unique index 인덱스명 on 테이블명( 칼럼명1, 칼럼명2, ... );
 -- dept01 테이블의 인덱스를 출력하는 sql문을 만드시오.
 
 -- dept01 테이블의 dname 컬럼에 인덱스, idx_dname를 생성하시오.
