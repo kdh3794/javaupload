@@ -2,6 +2,8 @@ package java22.junit;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -58,15 +60,16 @@ public class TestMyUnit {
         
     }
     
-    @Test (expected = ArithmeticException.class)// () 안의 부분이 exception 처리 하는 부분.
+    @Test(expected = ArithmeticException.class) // () 안의 부분이 exception 처리 하는 부분.
     public void test_getException() {
         double result = myUnit.getException(); // ArithmeticException 발생.
         
     }
     
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = IndexOutOfBoundsException.class) // 오류 날시 밑에 가장 위쪽 줄. () 안에.
     public void test_getEmptyList() {
-        
+        ArrayList<String> list = myUnit.getEmptyList();
+        list.get(0);
     }
     
 }

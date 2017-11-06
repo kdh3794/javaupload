@@ -2,38 +2,48 @@ package java22.junit;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
-
 public class TestOper {
     
- 
-    @Test
-    public void testadd() {
-        // Oper클래스 인스턴스 생성
-        Oper op = new Oper(2,4);
-        int add = op.add();
-        assertEquals(6, add);
+    private static Oper oPer = null;
+    
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+        oPer = new Oper();
     }
+    
     @Test
-    public void testminus(){
-        Oper op = new Oper(2,4);
+    public void add() {
+        Oper op = new Oper(5, 5);
+        int add = op.add();
+        assertEquals(10, add);
+        
+    }
+    
+    @Test
+    public void test_minus() {
+        Oper op = new Oper(5, 3);
         int minus = op.minus();
-        assertEquals(-2, minus);
-    } 
+        assertNotEquals(3, minus);
+        assertEquals(2, minus);
+    }
+    
     @Test
-    public void testmul(){
+    public void test_mul() {
         Oper op = new Oper(2,4);
         int mul = op.mul();
-        assertEquals((int)8, mul);
+        assertEquals(8, mul);
+        
     }
+    
     @Test
-    public void testdiv(){
-        Oper op = new Oper(2,4);
-        double div = op.div();
-        assertEquals(0.5, div,0.0);
+    public void test_div() {
+        
     }
+    
 }
