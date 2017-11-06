@@ -14,8 +14,8 @@ public class RectTest {
        int height = sc.nextInt();
        rect.setWidth(width);
        rect.setHeight(height);
-       rect.area();
-       rect.perimeter();
+       rect.printarea();
+       rect.printperimeter();
    }
     
 }

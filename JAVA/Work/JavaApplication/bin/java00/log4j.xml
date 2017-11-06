@@ -12,7 +12,7 @@
         </layout>
     </appender>
     
-    <!-- 일별 로그 : 날짜별로  로그를 남김. Log file에 날짜를 붙여 백업하는 방식 -->   
+    <!-- 일별 파일 로그 : 날짜별로  로그를 남김. Log file에 날짜를 붙여 백업하는 방식 -->   
     <appender name="rolling" class="org.apache.log4j.DailyRollingFileAppender">  
 
         <!-- Tomcat Restart시 새로쓸껀지 말껀지 : True 기존파일에 추가, False 새로씀 -->
@@ -62,7 +62,7 @@
 
     <!-- Root Logger -->
     <root>
-        <priority value="debug" />
+        <priority value="debug" /> <!-- priority는 로그 level에 해당된다. -->
         <appender-ref ref="console" />
         <appender-ref ref="rolling" />
     </root>

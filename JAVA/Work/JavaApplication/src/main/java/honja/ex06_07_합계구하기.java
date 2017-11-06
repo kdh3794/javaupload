@@ -25,13 +25,11 @@ public class ex06_07_합계구하기 {
             
         }
     }
-     
-        
     
-    public static void Sumsum(int x, int y, int sum){
+    public static void Sumsum(int x, int y, int sum) {
         
-       
         System.out.println(x + "부터" + y + "까지의 합은 " + sum + "입니다");
-    
+        
     }
+    
 }
