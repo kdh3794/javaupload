@@ -86,8 +86,10 @@ compile group: 'log4j', name: 'log4j', version: '1.2.17'
     compile "org.springframework:spring-tx:4.1.7.RELEASE"
 
 
-    // mysql 라이브러리
-    compile 'mysql:mysql-connector-java:5.1.38'
+    // mysql 드라이버 라이브러리
+    
+   compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.38'
+    
     
 
     // mybatis 라이브러리
