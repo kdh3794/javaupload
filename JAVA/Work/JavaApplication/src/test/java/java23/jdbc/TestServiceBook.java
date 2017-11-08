@@ -2,39 +2,37 @@ package java23.jdbc;
 
 import static org.junit.Assert.*;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestDaoBook {
+public class TestServiceBook {
+    private static ServiceBook svr  = null;
     static java.sql.Connection conn = null;
     
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        conn = DBConnect.makeConnection();
+        svr = new ServiceBook();
+        
     }
     
     @Test
     public void testGetCount() throws SQLException {
-        DaoBook dao = new DaoBook(conn);
         ModelBook model = new ModelBook();
-        int result = dao.getCount(model);
+        int result = svr.getCount(model);
         assertEquals(4, result);
     }
     
     @Test
     public void testGetMaxBookid() throws SQLException {
-        DaoBook dao = new DaoBook(conn);
-        int result = dao.getMaxBookid();
+        int result = svr.getMaxBookid();
         assertEquals(4, result);
     }
     
     @Test
     public void testSelectAll() throws SQLException {
-        DaoBook dao = new DaoBook(conn);
-        java.sql.ResultSet rs = dao.selectAll();
+        java.sql.ResultSet rs = svr.selectAll();
         
         rs.next(); // resultset 에서 다음 row로 커서 이동
         int bookid = rs.getInt("bookid");
@@ -46,11 +44,10 @@ public class TestDaoBook {
     
     @Test
     public void testSelectLike() throws SQLException {
-        DaoBook dao = new DaoBook(conn);
         ModelBook book = new ModelBook();
         book.setBookname("ja");
         
-        java.sql.ResultSet rs = dao.selectLike(book);
+        java.sql.ResultSet rs = svr.selectLike(book);
         
         // resultset을 이용한 검증
         assertNotNull(rs);
@@ -66,14 +63,13 @@ public class TestDaoBook {
     }
     
     @Test
-    public void testSelectEqual() throws SQLException {
-        
+    public void testSelectEqul() throws SQLException {
         ModelBook book = new ModelBook();
         book.setBookname("mysql");
         
-        DaoBook dao = new DaoBook(conn);
+        svr = new ServiceBook();
         
-        java.sql.ResultSet rs = dao.selectEqual(book);
+        java.sql.ResultSet rs = svr.selectEqual(book);
         
         // 인스턴스 검증
         assertNotNull(rs);
@@ -88,23 +84,23 @@ public class TestDaoBook {
     @Test
     public void testSelectDynamic() throws SQLException {
         ModelBook book = new ModelBook();
-        DaoBook dao = new DaoBook(conn);
+       
         
         // 첫번째 검증. select * from book where 1 = 1
         book.setBookid(null);
         book.setBookname("");
-        java.sql.ResultSet rs = dao.selectDynamic(book);
+        java.sql.ResultSet rs = svr.selectDynamic(book);
         assertNotNull(rs); // 인스턴스검증        
         // 갯수로 검증
         rs.last();
         int rows = rs.getRow();        
-        assertEquals(dao.getCount(book), rows);    
+        assertEquals(svr.getCount(book), rows);    
         
         
         // 두번째 검증. select * from book where 1 = 1 and bookid = 1;
         book.setBookid(1);
         book.setBookname("");
-        rs = dao.selectDynamic(book);        
+        rs = svr.selectDynamic(book);        
         // 인스턴스 검증
         assertNotNull(rs);        
         // 값으로 검증.
@@ -120,7 +116,7 @@ public class TestDaoBook {
         // 세번째 검증. select * from book where 1 = 1 and bookname = 'java';
         book.setBookid(null);
         book.setBookname("java");
-        rs = dao.selectDynamic(book);
+        rs = svr.selectDynamic(book);
         //인스턴스 검증
         assertNotNull(rs);
         //값으로 검증
@@ -134,7 +130,7 @@ public class TestDaoBook {
         // 네번째 검증. select * from book where 1 = 1 and bookid = 2 and bookname = 'mysql';
         book.setBookid(null);
         book.setBookname("mysql");
-        rs = dao.selectDynamic(book);
+        rs = svr.selectDynamic(book);
         //인스턴스 검증
         assertNotNull(rs);
         //값으로 검증
@@ -155,6 +151,7 @@ public class TestDaoBook {
         
     }
     
+    
     @Test
     public void testInsertBook() throws SQLException {
         java.util.Date date1 = new java.util.Date(117, 10, 8);
@@ -169,14 +166,13 @@ public class TestDaoBook {
         book.setUse_yn(true);
         book.setAuthid(3);
         
-        DaoBook dao = new DaoBook(conn);
-        int result = dao.insertBook(book);
+        svr = new ServiceBook();
+        int result = svr.insertBook(book);
         
         // insert 검증
         // 1 리턴되는 경우 : insert 성공
         // 0 리턴되는 경우 : insert 실패
         assertEquals(1, result);
-        
     }
     
     @Test
@@ -188,8 +184,8 @@ public class TestDaoBook {
         setbook.setYear("2016");
         setbook.setPrice(15000);
         
-        DaoBook dao = new DaoBook(conn);
-        int rs = dao.updateBook(wherebook, setbook);
+        svr = new ServiceBook();
+        int rs = svr.updateBook(wherebook, setbook);
         // update검증 :
         // 1 이상의 값이 리턴되는 경우 update성공
         // 0 값이 리턴되는 경우 update에서는 성공 이나 다름없다
@@ -201,19 +197,34 @@ public class TestDaoBook {
         ModelBook book = new ModelBook();
         book.setBookname("test");
         
-        DaoBook dao = new DaoBook(conn);
-        int rs = dao.deleteBook(book); // rs ==1
+        svr = new ServiceBook();
+        int rs = svr.deleteBook(book); // rs ==1
         // delete검증 :
         // 1 이상의 값이 리턴되는 경우 delete성공
         // 0 값이 리턴되는 경우 delete에서는 성공 이나 다름없다
         assertTrue(rs >= 0);
         
-        book.setBookname("tset2");
-        rs = dao.deleteBook(book); // rs ==2
+        book.setBookname("test2");
+        rs = svr.deleteBook(book); // rs ==2
         // delete검증 :
         // 1 이상의 값이 리턴되는 경우 delete성공
-        // 0 값이 리턴되는 경우 delete에서는 성공 이나 다름없다
+        // 0 값이 리턴되는 경우 delete에서는 성공이나 다름없다
         assertTrue(rs >= 0);
+    }
+    
+    @Test
+    public void testSelectEqual() {
+        fail("Not yet implemented");
+    }
+    
+    @Test
+    public void testTransCommit() {
+        fail("Not yet implemented");
+    }
+    
+    @Test
+    public void testTransRollback() {
+        fail("Not yet implemented");
     }
     
 }

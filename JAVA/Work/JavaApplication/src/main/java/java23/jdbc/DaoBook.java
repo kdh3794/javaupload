@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class DaoBook implements IBook {
     private java.sql.Connection conn = null;
-    
+    //생성자
     public DaoBook(Connection conn) {
         super();
         this.conn = conn;
@@ -121,10 +121,10 @@ public class DaoBook implements IBook {
         java.sql.ResultSet result = null;
         try {
             //query 작성
-            String query = "select * from book \n";
-            query += "where 1 =1 \n";
-            if(book.getBookid() != null) query += "where 1 =1 \n";
-            if(!book.getBookname().isEmpty()) query += "where 1 =1 \n";
+                                        String query = "select * from book \n";
+                                              query += "where 1 =1 \n";
+            if(book.getBookid() != null     ) query += "and bookid = ? \n";
+            if(!book.getBookname().isEmpty()) query += "and bookname = ?\n";
             
             //문장 객체 생성
             java.sql.PreparedStatement stmt = conn.prepareStatement(query);
@@ -199,10 +199,6 @@ public class DaoBook implements IBook {
         }
         return rs;
     }
-    @Override
-    public ResultSet selectEqul(ModelBook book) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
-    }
+  
     
 }
