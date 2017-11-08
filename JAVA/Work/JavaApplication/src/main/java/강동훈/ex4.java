@@ -2,20 +2,26 @@ package 강동훈;
 
 import java.util.Scanner;
 
-import 강동훈.Oper;
-
 public class ex4 {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-       
-        System.out.print("첫번째 : ");
-        int a = sc.nextInt();
-        System.out.print("두번째 : ");
-        int b = sc.nextInt();
+    public static void main(String[] args) {
         
-        System.out.println("Add : " + Oper.add(a, b));
-        System.out.println("Minus : " + Oper.minus(a, b));
-        System.out.println("mul : " + Oper.mul(a, b));
-        System.out.format("div :  "  + Oper.div(a, b)); //소수점 한자리만 됨.
+        Scanner sc = new Scanner(System.in);
+        
+        int a;
+        int b;
+        
+        System.out.print("First num : ");
+        a = sc.nextInt();
+        
+        System.out.print("Second num : ");
+        b = sc.nextInt();
+        
+        Oper op = new Oper(a, b);
+        
+        System.out.println("Add : " + op.add());
+        System.out.println("Minus : " + op.minus());
+        System.out.println("Mul : " + op.mul());
+        System.out.format("Div : %.6f", op.div());
     }
+    
 }

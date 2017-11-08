@@ -15,4 +15,5 @@ public interface IBook {
     int insertBook(ModelBook book) throws SQLException;
     int updateBook(ModelBook wherebook, ModelBook setbook) throws SQLException;
     int deleteBook(ModelBook book) throws SQLException;
+    ResultSet selectEqual(ModelBook book) throws SQLException;
 }

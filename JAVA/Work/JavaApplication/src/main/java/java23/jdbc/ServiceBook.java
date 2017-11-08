@@ -71,5 +71,11 @@ public class ServiceBook implements IServiceBook {
         // TODO Auto-generated method stub
         return 0;
     }
+
+    @Override
+    public ResultSet selectEqual(ModelBook book) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
     
 }

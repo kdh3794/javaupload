@@ -38,6 +38,8 @@ public class Manager extends Employee{
         info = info + ", address" + super.getAddr();
         info = info + ", Salary:" + super.salary;
         info = info + ", rrn" + super.getRrn();
+        
+        
         System.out.println(info);
     }
   

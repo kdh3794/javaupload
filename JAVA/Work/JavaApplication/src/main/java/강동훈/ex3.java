@@ -27,20 +27,22 @@ public class ex3 {
                 System.out.print(" 종료");
                 break;
             }
-            
-            for (int i = x; i <= y; i = i + 1) {
-                
-                for (int j = 1; j <= 9; j = j + 1) {
-                    a = i * j;
-                    System.out.println(i + " * " + j + " = " + a);
-                }
-                System.out.println();
-            }
+            int sum = sum2(x, y);
         }
+        
     }
     
-
-private static void print2(int x, int y){
-    
+    private static int sum2(int x, int y) {
+        int a = 0;
+        for (int i = x; i <= y; i = i + 1) {
+            
+            for (int j = 1; j <= 9; j = j + 1) {
+                a = i * j;
+                System.out.println(i + " * " + j + " = " + a);
+            }
+            System.out.println();
+        }
+        
+        return a;
+    }
 }
-} // 메소드 부분 보류.

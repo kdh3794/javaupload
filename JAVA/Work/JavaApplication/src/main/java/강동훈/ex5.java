@@ -23,18 +23,17 @@ public class ex5 {
             int bounus = sc.nextInt();
             
             Employee emp1 = new Employee();
-            emp1.setAddress(addr); 
+            emp1.setAddress(addr);
             emp1.setName(name);
             emp1.setRrn(rrn);
             emp1.setSalary(salary);
-
             
-            employees[i] = emp1; 
-            System.out.println(emp1.toString()); 
+            employees[i] = emp1;
+            
         }
         
         for (int i = 0; i <= employees.length - 1; i = i + 1) {
             System.out.println(employees[i]);
         }
-    } 
+    }
 }
