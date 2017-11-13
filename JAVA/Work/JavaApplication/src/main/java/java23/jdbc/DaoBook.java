@@ -170,11 +170,11 @@ public class DaoBook implements IBook {
     public int updateBook(ModelBook wherebook, ModelBook setbook) throws SQLException {
         int rs =0;
         try {
-            String qurey = "update book";
-            qurey += " set year =? , price =? ";
-            qurey += " where bookname =? ";
+            String query = "update book";
+            query += " set year =? , price =? ";
+            query += " where bookname =? ";
             
-            PreparedStatement stmt = conn.prepareStatement(qurey);
+            PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString  (1, setbook.getYear());
             stmt.setInt     (2, setbook.getPrice());
             stmt.setString  (3, wherebook.getBookname());
@@ -189,9 +189,9 @@ public class DaoBook implements IBook {
     public int deleteBook(ModelBook book) throws SQLException {
         int rs=0;
         try {
-            String qurey = "delete from book where bookname =? ";
+            String query = "delete from book where bookname =? ";
             
-            PreparedStatement stmt = conn.prepareStatement(qurey);
+            PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, book.getBookname());
             rs = stmt.executeUpdate();
         } catch (SQLException e) {

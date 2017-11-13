@@ -12,8 +12,9 @@ public interface IAuth {
     
     ResultSet selectDynamic(ModelAuth auth) throws SQLException;
     
-    int insertauth(ModelAuth auth) throws SQLException;
-    int updateauth(ModelAuth whereauth, ModelAuth setauth) throws SQLException;
-    int deleteauth(ModelAuth auth) throws SQLException;
+    int insertAuth(ModelAuth auth) throws SQLException;
+    int updateAuth(ModelAuth whereauth, ModelAuth setauth) throws SQLException;
+    int deleteAuth(ModelAuth auth) throws SQLException;
+
  
 }
