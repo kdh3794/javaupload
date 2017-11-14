@@ -24,7 +24,7 @@ public class TestRect {
     @Test
     public void test_area() {
         // rect 클래스의 인스턴스를 만들고
-        // width = 25, height = 30 설정하시오.
+        // width = 2, height = 30 설정하시오.
         int a = r.area();
         assertEquals(60, a);
         assertNotEquals(80, a);
