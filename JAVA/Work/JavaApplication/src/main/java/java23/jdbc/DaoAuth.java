@@ -122,7 +122,7 @@ public class DaoAuth implements IAuth {
         ResultSet rs = null;
         
         try {
-            String query = " select * from book where name = ? "; // 작은 따옴표도 값이므로 ?만 넣어줘야 함.
+            String query = " select * from auth where name = ? "; // 작은 따옴표도 값이므로 ?만 넣어줘야 함.
             
             // 문장 객체 생성.
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -144,28 +144,31 @@ public class DaoAuth implements IAuth {
         ResultSet result = null;
         try {
             String query = "select * from auth \n";
-            query += "where 1 = 1\n ";
-            if (auth.getAuthid() != null)
-                query += "and authid = ? \n";
-            if (!auth.getName().isEmpty())
-                query += "and name = ?\n";
+            query += "where 1 = 1   \n ";
+            if (auth.getAuthid() != null)  query += "and authid = ? \n";
+            if (!auth.getName().isEmpty()) query += "and name = ?\n";
+            if (!auth.getBirth().isEmpty()) query += "and birth = ?\n";
+            
             
             // 문장 객체 생성
             PreparedStatement stmt = conn.prepareStatement(query);
+            
             
             int c = 1;
             if (auth.getAuthid() != null)
                 stmt.setInt(c++, auth.getAuthid());
             if (!auth.getName().isEmpty())
                 stmt.setString(c++, auth.getName());
+            if(!auth.getBirth().isEmpty())
+                stmt.setString(c++, auth.getBirth());
             
-            result = stmt.executeQuery();
+            result = stmt.executeQuery();            
+            
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             
-        }
-        
+        }        
         return result;
         
     }
