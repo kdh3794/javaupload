@@ -24,11 +24,11 @@ public class Manager extends Employee{
                 + ", toString()=" + super.toString() + "]";
     }
 
-    public Manager(String name, String addr, int salary, int rrn) {
+    public Manager(String name, String addr, int salary, String rrn) {
         super(name, addr, salary, rrn);
     }
 
-    public Manager(String name, String addr, int salary, int rrn, int bounus) {
+    public Manager(String name, String addr, int salary, String rrn, int bounus) {
         super(name, addr, salary, rrn);
         this.bounus = bounus;
     }

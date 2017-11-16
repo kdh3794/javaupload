@@ -4,7 +4,7 @@ public class Employee {
     private String name;
     private String addr;
     protected int salary ;
-    private int rrn;
+    private String rrn;
     public String getName() {
         return name;
     }
@@ -23,10 +23,10 @@ public class Employee {
     public void setSalary(int salary) {
         this.salary = salary;
     }
-    public int getRrn() {
+    public String getRrn() {
         return rrn;
     }
-    public void setRrn(int rrn) {
+    public void setRrn(String rrn) {
         this.rrn = rrn;
     }
     @Override
@@ -34,7 +34,7 @@ public class Employee {
         return "Employee [name=" + name + ", addr=" + addr + ", salary="
                 + salary + ", rrn=" + rrn + "]";
     }
-    public Employee(String name, String addr, int salary, int rrn) {
+    public Employee(String name, String addr, int salary, String rrn) {
         super();
         this.name = name;
         this.addr = addr;

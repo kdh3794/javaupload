@@ -2,7 +2,7 @@ package 강동훈;
 
 import java.util.Scanner;
 
-import honja.Employee;
+import 강동훈.Employee;
 
 public class ex5 {
     public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class ex5 {
             int bounus = sc.nextInt();
             
             Employee emp1 = new Employee();
-            emp1.setAddress(addr);
+            emp1.setAddr(addr);
             emp1.setName(name);
             emp1.setRrn(rrn);
             emp1.setSalary(salary);
