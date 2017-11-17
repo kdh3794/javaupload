@@ -7,7 +7,7 @@ class PhoneBookManager{
  //데이터의 저장, 검색, 삭제
  
  PhoneInfo [] phoneBook;
- private int count;//전화번호부에 저장되잇는 사람수
+ private int count;//전화번호부에 저장돼 있는 사람수
  Scanner keyboard = new Scanner(System.in);
  
  public PhoneBookManager(){
@@ -111,7 +111,7 @@ class PhoneMain {
   System.out.println("1. 데이터 입력");
   System.out.println("2. 데이터 검색");
   System.out.println("3. 데이터 삭제");
-  System.out.println("4. 데이터 종료");
+  System.out.println("4. 프로그램 종료");
   
  }
  
@@ -135,7 +135,7 @@ class PhoneMain {
    case 3://삭제
      phoneManager.removeBook();
      break;
-   case 4: System.out.println("프로그램을종료합니다.");
+   case 4: System.out.println("프로그램을 종료합니다.");
      return;
    }
       
