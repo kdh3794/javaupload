@@ -1,0 +1,67 @@
+9.15
+
+우분투 : 버추얼박스 오른쪽클링 설정 네트워크 어댑터1 브리지 어댑터
+
+
+github.com에 저장소 만들기
+
+github 들어가서 자바업로드 주소 복사 
+폴더 아무거나 만들어서 오른쪽 클릭하고 git clone. url붙여넣기
+만들어진 폴더에서 .git 복사해서 D:\workspace\Lecture에 붙여넣기
+D:\workspace\Lecture\JAVA\java에서 .gitignore 복사해서 똑같은곳에 붙여넣기
+D:\workspace로 가서 lecture 폴더 오른쪽 클릭하고 tortoisegit 눌러서 add
+
+
+
+밴드에 가서 gitignore  받은뒤에 울트라에디트로 열어서 새이름으로 저장해서 맨 앞에 마침표 붙이기.
+gitignore 복사해서 D:\workspace\Lecture 붙여넣기
+(기존에 우리가 하던 거는 meta data가 많아서 강사님이 수정해주신 파일, 그냥 우리꺼 써도 상관없을듯)
+
+
+ D:\workspace 들어가서 lecture 폴더 오른쪽 클릭해서
+toritoisegit -> add 하기 . 폴더 오른쪽 클릭해서 git commit 누르고 all 누르고 모두 선택되어있는지
+ 확인한 뒤에 commit
+오른쪽 클릭해서 toritoisegit -> push.  remote가 origin인지 확인해야함.
+
+9.18
+1. github.com 에서 저장소 생성하기
+2. git clone 하기 : 폴더와 github
+
+
+문자 출력하는거 5p랑 18p 외우기
+
+
+android studio 위치 /home/tester1/Android/Sdk
+
+설치하고난뒤는 configure -> sdk manager->.0.5(반드시 이버전을 설치,  최소 기준임)  7.1.1을 설치
+
+
+linux upuntu desktop 16.0.4 설치
+이름 ~~
+모드 : 전문가 모드
+하드 용량 20
+메모리 2
+
+네트워크 ip 안되면 브리지 어댑터 같은데 ?
+
+1. java 설치
+2. bvulid 툴 설치
+3. androide srudio 설치 & 설정
+
+<초기설정>
+안드로이드 들어가서 위쪽 녹색 화살표  -> create new~ -> os 선택 nexus 5선택하고 next 
+-> 21버전 lollipop-> 오른쪽 install->next->finish->에뮬레이터 추가된거 확인하고 ok
+
+
+강사님이 git hub에 올려놓으신거 받으려면 D:\workspace\Lecture\JAVA 들어가서 java오른쪽 누르고 
+pull(잘못하면 내 자바 코드랑 연동)
+
+9.21
+이클립스 설정파일은 메타데이터에 저장. 메타데이터 파일을 옮기면 된다.
+
+9.22
+구구단 쪽.  무한루프 해보기
+
+
+자바 cmd 들어가는 법 
+해당 폴더에서 오른쪽 클릭 cmd open 한다음 java붙이고 한칸 띄운 다음에 클래스명.~~~
