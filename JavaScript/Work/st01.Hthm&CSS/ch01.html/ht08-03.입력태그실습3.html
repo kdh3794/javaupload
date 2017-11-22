@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style type="text/css">
+        label { width:150px; display:inline-block; vertical-align:top;}
+        ul li{
+      margin-bottom:10px;
+    }
+    </style>
+</head>
+<body>
+    <!-- form 태그 필요 속성 3가지 추가. -->
+    <form>
+
+
+
+           <h1>상품 주문서</h1>
+
+        <!-- 회원가입 -->
+        <fieldset>
+            <legend>개인 정보</legend>
+             <ul>
+          <li>
+             <label>이름   :</label><input type="text" name="이름" placeholder="여백없이 입력"> <!--label은 필수 사항은 아님. 하지만 묶어 놓으면 편함.-->
+
+          </li>
+          <li>
+             <label>연락처 :</label> <input type="number" name="연락처" placeholder="연락가능한 번호">
+          </li>
+
+        </ul>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>배송지 정보</legend>
+            <ul>
+                <li>
+                    <label>주소 : </label>
+                    <input type="address" name="주소" size="50">
+                </li>
+                <li>
+                    <label>전화번호 : </label>
+                    <input type="number" name="전화번호" >
+
+                </li>
+                <li>
+                <div align="top"><label >메 모 : </label></div>
+                <textarea name="메모" style="height:80px; width:220px;" name="메모" >
+                </textarea></li>
+            </ul>
+        </fieldset>
+
+         <fieldset>
+            <legend>주문 정보</legend>
+            <ul>
+                <li>
+                   <input type="checkbox"> 과테말라 안티구 (100g) :
+                    <input type="number" name="과테말라" style="width:50px; display:inline-block;">개
+                </li>
+                <li>
+                   <input type="checkbox"> 인도네시아 만델링  (100g) :
+                    <input type="number" name="인도네시아" style="width:50px; display:inline-block;">개
+                </li>
+
+                </li>
+                <li><input type="checkbox">
+                탐라는도다(블렌딩) (100g) :
+                <input type="number" name="탐라" style="width:50px; display:inline-block;">개
+                </li>
+                </li>
+
+            </ul>
+        </fieldset>
+
+       <center> <input type="submit" name="" value="주문하기">
+        <input type="reset" name="" value="다시작성"></center>
+
+    </form>
+
+</body>
+</html>
