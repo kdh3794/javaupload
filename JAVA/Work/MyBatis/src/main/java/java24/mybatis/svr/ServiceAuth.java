@@ -1,5 +1,7 @@
 package java24.mybatis.svr;
 
-public class ServiceAuth {
+import java24.mybatis.inf.IServiceAuth;
+
+public class ServiceAuth implements IServiceAuth {
     
 }

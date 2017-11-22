@@ -11,15 +11,10 @@ public interface IBook {
     List<ModelBook> selectAll(ModelBook book) throws Exception;
     List<ModelBook> selectLike(ModelBook book) throws Exception;
     List<ModelBook> selectEqual(ModelBook book) throws Exception;
-    int insertBook(ModelBook book) throws Exception;
+    int insertbook(ModelBook book) throws Exception;
     int insertMap(String bookname, Date dtm, int authid) throws Exception;
     int updateBook(ModelBook wherebook, ModelBook setbook ) throws Exception;
     int deleteBook(ModelBook book) throws Exception;
     List<ModelBook> selectDynamic(ModelBook book) throws Exception;
-    int insert(ModelBook book) throws Exception;
-    int update(ModelBook wherebook, ModelBook setbook) throws Exception;
-    int delete(ModelBook book) throws Exception;
-    int insertbook(ModelBook book) throws Exception;
-    
 
 }

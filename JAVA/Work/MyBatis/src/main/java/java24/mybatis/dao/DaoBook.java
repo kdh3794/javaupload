@@ -1,4 +1,3 @@
-
 package java24.mybatis.dao;
 
 import java.util.Date;
@@ -15,16 +14,17 @@ import java24.mybatis.inf.IBook;
 import java24.mybatis.model.ModelBook;
 @Repository("daobook")
 
-public class DaoBook implements IBook{
+public class DaoBook implements IBook {
     
     @Autowired
     @Qualifier("sqlSession")
     private SqlSession session;
+    
 
     @Override
     public int getCount(ModelBook book) throws Exception {
         int result = -1;
-        session.selectOne("mapper.mapperBook.getCount",book);
+        result = session.selectOne("mapper.mapperBook.getCount", book);
         return result;
     }
 
@@ -37,17 +37,16 @@ public class DaoBook implements IBook{
 
     @Override
     public List<ModelBook> selectAll(ModelBook book) throws Exception {
-       List<ModelBook> result = null;
-       result = session.selectList("mapper.mapperBook.selectAll", book);
-        return null;
+        List<ModelBook> result = null;
+        result = session.selectList("mapper.mapperBook.selectAll", book);
+        return result;
     }
 
     @Override
     public List<ModelBook> selectLike(ModelBook book) throws Exception {
-        List<ModelBook>  result = null;
+        List<ModelBook> result = null;
         result = session.selectList("mapper.mapperBook.selectLike", book);
         return result;
-         
     }
 
     @Override
@@ -58,73 +57,48 @@ public class DaoBook implements IBook{
     }
 
     @Override
-    public int insert(ModelBook book) throws Exception {
-        int result = -1;
-        session.insert("mapper.mapperBook.insert", book);
-        return 0;
+    public int insertbook(ModelBook book) {
+      
+        session.insert("mapper.mapperBook.insertbook",book);
+        return book.getBookid();
     }
 
     @Override
     public int insertMap(String bookname, Date dtm, int authid)
             throws Exception {
-        
-        Map<String, Object> map = new HashMap<>();
-        map.put("b1", bookname);
-        map.put("d1", dtm);
-        map.put("a1", authid);
-        
         int result = -1;
-        result=session.insert("mapper.mapperBook.insertMap", map);
+        Map<String, Object> map = new HashMap<>();
+        map.put("bookname", bookname);
+        map.put("dtm", dtm);
+        map.put("authid", authid);
+        result = session.insert("mapper.mapperBook.insertMap",map);
+        
         return result;
-    }
-
-    @Override
-    public int update(ModelBook wherebook, ModelBook setbook) throws Exception {
-       int result = -1;
-       Map<String, Object> map = new HashMap<>();
-       map.put("wherebook", wherebook);
-       map.put("setbook", setbook);
-       
-       
-       result = session.update("mapper.mapperBook.updateBook", map);
-       return result;
-      
-    }
-
-    @Override
-    public int delete(ModelBook book) throws Exception {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public List<ModelBook> selectDynamic(ModelBook book) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public int insertBook(ModelBook book) throws Exception {
-        // TODO Auto-generated method stub
-        return 0;
     }
 
     @Override
     public int updateBook(ModelBook wherebook, ModelBook setbook)
             throws Exception {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        Map<String, Object> map = new HashMap<>();
+        map.put("wherebook", wherebook);
+        map.put("setbook", setbook);
+        result = session.update("mapper.mapperBook.updateBook", map);
+        return result;
     }
 
     @Override
     public int deleteBook(ModelBook book) throws Exception {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = -1;
+        result = session.delete("mapper.mapperBook", book);
+        return result;
     }
 
     @Override
-    public int insertbook(ModelBook book) throws Exception {
-        // TODO Auto-generated method stub
-        return 0;
+    public List<ModelBook> selectDynamic(ModelBook book) throws Exception {
+        List<ModelBook> result = null;
+        result = session.selectList("mapper.mapperBook",book);
+        return result;
     }
+    
 }

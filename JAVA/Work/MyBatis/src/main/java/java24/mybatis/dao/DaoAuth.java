@@ -1,5 +1,7 @@
 package java24.mybatis.dao;
 
-public class DaoAuth {
+import java24.mybatis.inf.IAuth;
+
+public class DaoAuth implements IAuth {
     
 }
