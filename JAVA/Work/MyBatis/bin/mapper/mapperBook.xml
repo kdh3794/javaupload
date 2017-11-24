@@ -46,9 +46,9 @@
         VALUES( #{bookname}, #{publisher}, #{year}, #{price}, #{dtm}, #{use_yn}, #{authid} )
     </insert>
     
-    <insert id="insertMap" parameterType="Map">
+    <insert id="insertMap" parameterType="Map" useGeneratedKeys="true" keyProperty="bookid">
         INSERT INTO BOOK( bookname, dtm, authid )
-        values( #{bookname}, #{dtm}, #{authid} )
+        values( #{b}, #{d}, #{a} )
     </insert>
     <update id="updateBook" parameterType="Map">
         update book
@@ -66,6 +66,7 @@
     <delete id="deleteBook" parameterType="ModelBook">
         delete from book
          where 1 = 1
+         
            <if test = " bookid != null ">                     and bookid   = #{bookid  }</if>
            <if test = " bookname != null and bookname != '' ">and bookname = #{bookname} </if>
     </delete>

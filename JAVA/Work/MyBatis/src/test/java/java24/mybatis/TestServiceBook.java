@@ -72,6 +72,9 @@ public class TestServiceBook {
         assertEquals(rs.size(), 1);
         // 갯수로 검증.
         
+        
+        /*  강사님꺼
+             */
     }
     
     @Test
@@ -104,13 +107,17 @@ public class TestServiceBook {
         book.setAuthid(3);
         
         int rs = service.insertbook(book);
-        assertEquals(5, rs);
+        assertEquals(9, rs);
         
     }
     
     @Test
-    public void testInsertMap() {
-        fail("Not yet implemented");
+    public void testInsertMap() throws Exception {      
+        
+        java.sql.Date date2 = java.sql.Date.valueOf("2017-11-22");
+        
+       int rs = service.insertMap("test2", date2, 4);
+        
     }
     
     @Test
@@ -119,27 +126,30 @@ public class TestServiceBook {
         wherebook.setBookname("test");
         
         ModelBook setbook = new ModelBook();
+        
+        setbook.setBookname("test");
         setbook.setYear("2016");
         setbook.setPrice(15000);
+        setbook.setPublisher("abb");
         
+
         
         int rs = service.updateBook(wherebook, setbook);
-        // update검증 :
-        // 1 이상의 값이 리턴되는 경우 update성공
-        // 0 값이 리턴되는 경우 update에서는 성공 이나 다름없다
+     
         assertTrue(rs >= 0);
     }
     
     @Test
     public void testDeleteBook() throws Exception {
         ModelBook book = new ModelBook();
-        book.setPrice(15000);
+    
+        book.setBookname("test");
         
         int rs = service.deleteBook(book); // rs ==1
-        // delete검증 :
-        // 1 이상의 값이 리턴되는 경우 delete성공
-        // 0 값이 리턴되는 경우 delete에서는 성공 이나 다름없다
+        
         assertTrue(rs >= 0);
+        
+     
         
       
     }

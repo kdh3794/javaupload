@@ -27,7 +27,7 @@ public class PhoneBookApp {
         System.out.println("-------------------------------------------------");
         System.out.println("전화번호 관리 프로그램을 시작합니다. 파일로 저장합니다.");
         System.out.println("-------------------------------------------------");
-        while(true) {
+        for(;;) {
             System.out.print("삽입:0. 삭제:1, 찾기:2, 전체보기:3, 파일 저장:4, 종료:5>>");
             int menu = readNumber();
             switch(menu) {

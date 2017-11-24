@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mapperAuth">
+
+
+    <select id="getMaxAuthid" resultType="int">
+        select max(Authid)
+        from Auth
+        where 1 = 1
+    </select>
+
+    <select id="getCount" parameterType="ModelAuth" resultType="int">
+        select count(*) from Auth
+        where 1 = 1
+        <if test="name!=null and name!= '' ">and name like #{name }
+        </if>
+        <if test="birth!=null and birth!= '' ">and birth like #{birth}</if>
+
+    </select>
+
+    <select id="selectAll" parameterType="ModelAuth" resultType="ModelAuth">
+        select * from Auth
+
+    </select>
+    <select id="selectLike" parameterType="ModelAuth" resultType="ModelAuth">
+        select * from Auth
+        where 1 = 1
+        <if test="name!=null and name!= '' ">and name like #{name }
+        </if>
+        <if test="birth!=null and birth!= '' ">and birth like #{birth}</if>
+
+    </select>
+
+    <select id="selectEqual" parameterType="ModelAuth"
+        resultType="ModelAuth">
+        select * from Auth
+        where 1=1
+        <if test="name!=null and name != '' ">and name = #{name }
+        
+        </if>
+        <if test="authid!=null">and Authid = #{authid }</if>
+        <if test="birth!=null and birth!='' ">and birth = #{birth}
+        </if>
+
+
+    </select>
+
+    <insert id="insertAuth" parameterType="ModelAuth"
+        useGeneratedKeys="true" keyProperty="Authid">
+        INSERT INTO Auth( name,
+        birth, authid )
+        VALUES( #{name}, #{birth}, #{authid} )
+    </insert>
+
+
+    <update id="updateAuth" parameterType="Map">
+        update Auth
+        set name = #{setauth.name }
+        , birth = #{setauth.birth}
+       
+        where 1 = 1
+        <if test="whereauth.authid != null">and Authid =
+            #{whereauth.authid }</if>
+        <if test="whereauth.name != null">and name =
+            #{whereauth.name}</if>
+    </update>
+    <delete id="deleteAuth" parameterType="ModelAuth">
+        delete from Auth
+        where 1 = 1
+
+        <if test=" authid != null "> and Authid = #{authid }</if>
+        <if test=" name != null and name != '' ">and name = #{name} </if>
+    </delete>
+
+    <select id="selectDynamic" parameterType="ModelAuth">
+
+    </select>
+
+
+</mapper>

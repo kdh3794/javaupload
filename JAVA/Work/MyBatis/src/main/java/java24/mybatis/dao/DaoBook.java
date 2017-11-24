@@ -68,12 +68,13 @@ public class DaoBook implements IBook {
             throws Exception {
         int result = -1;
         Map<String, Object> map = new HashMap<>();
-        map.put("bookname", bookname);
-        map.put("dtm", dtm);
-        map.put("authid", authid);
+        map.put("b", bookname);
+        map.put("d", dtm);
+        map.put("a", authid);
+        map.put("bookid", -1);
         result = session.insert("mapper.mapperBook.insertMap",map);
         
-        return result;
+        return (int) map.get("bookid");
     }
 
     @Override
@@ -90,7 +91,7 @@ public class DaoBook implements IBook {
     @Override
     public int deleteBook(ModelBook book) throws Exception {
         int result = -1;
-        result = session.delete("mapper.mapperBook", book);
+        result = session.delete("mapper.mapperBook.deleteBook", book);
         return result;
     }
 
