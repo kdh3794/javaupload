@@ -4,7 +4,7 @@ public class jv05_01_예외 {
     public static void main(String[] args){
         int x = 10;
         int y = 0;
-        int z;
+        int z ;
         try {
             z = x/y;
         } catch (Exception e) {

@@ -2,6 +2,20 @@ package 강동훈;
 
 import java.util.Scanner;
 
+
+class PhonebookManager{
+    //데이터의 저장, 검색, 삭제
+    
+    PhoneInfo[] phoneBook;
+    private int count;// 전화번호부에 저장되어 있는 사람 수
+    Scanner sc = new Scanner(System.in);
+    
+    public PhoneBookManger(){
+        phoneBook=new PhoneInfo[100];
+        count=0;
+    }
+}
+
 class PhoneInfo {
     
     private String name;
