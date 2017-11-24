@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style type="text/css">
+    /*자식 선택자*/
+        #header > h1{ color: red; }
+        /*후손 선택자*/
+        #section h1 {color: orange;}
+    </style>
 </head>
 <body>
     <div id="header">
@@ -13,7 +19,9 @@
     </div>
     <div id="section">
         <h1 class="title">Lorem ipsum</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+        <p>Lorem ipsum dolor sit amet,
+        <h1> consectetur</h1>
+         adipiscing elit. </p>
     </div>
 
     <h1>반응 선택자</h1>

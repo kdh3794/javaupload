@@ -3,18 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>CSS3 Selector Basic Page</title>
+    <style>
+
+        /*전체 선택자*/
+        * {font-size: 20px;}
+        /*태그 선택자 */
+        h1 { color : red; }
+         p {color : blue;}
+         li {color: green;}
+
+        /*아이디 선택자*/
+
+         #header {background-color: blue; color: red;}
+         .class {color: yellow;}
+         #aside { background-color: green; width:350px; height: 150px;}
+         #content {background-color: gray; width: 350px; height: 150px;}
+
+         .select {color: red;}
+
+    </style>
 </head>
 <body>
-    <h1>제목 글자</h1>
-    <p>난 파란 글씨야</p>
+    <h1 >제목 글자</h1>
+    <p >난 파란 글씨야</p>
     <p id="header"> 난 파란 글씨가 아니라 빨간 글씨야. </p>
     <p class="class"> 난 파란 글씨가 아니라 노란 글씨야. </p>
 
     <div id="header"> <h1>#header 태그</h1> </div>
-    <div id="wrap">
+
         <div id="aside"> <h1>#aside 태그</h1> </div>
         <div id="content"> <h1>#content 태그</h1> </div>
-    </div>
+
 
     <ul>
         <li class="select">사과</li>
