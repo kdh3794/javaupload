@@ -13,7 +13,7 @@ public interface IUser {
     int deleteUser (ModelUser user) throws Exception;
     List<ModelUser> selectUserOne(ModelUser user) throws Exception;
     List<ModelUser> selectUserList(ModelUser user) throws Exception;
-    int checkuserid (ModelUser user) throws Exception;
+    int checkuserid (String check) throws Exception;
     
     
 }

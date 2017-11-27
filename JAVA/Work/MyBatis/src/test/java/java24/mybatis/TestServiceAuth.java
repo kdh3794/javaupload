@@ -14,7 +14,7 @@ import java24.mybatis.model.ModelAuth;
 import java24.mybatis.svr.ServiceAuth;
 
 public class TestServiceAuth {
-    private static IServiceAuth service = null;
+    private static ServiceAuth service = null;
     
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {

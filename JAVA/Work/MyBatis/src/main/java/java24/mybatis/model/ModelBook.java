@@ -9,7 +9,7 @@ public class ModelBook {
    private String publisher   = "";    //`publisher` VARCHAR(40) NULL DEFAULT NULL,
    private String year        = "";    //`year`      VARCHAR(10) NULL DEFAULT NULL,
    private Integer price      = null;  //`price`     INT(11) NULL DEFAULT NULL,
-   private java.util.Date dtm = null;  //`dtm`       DATE NULL DEFAULT NULL,
+   private java.util.Date dtm = null;  //`dtm`       DATE NU LL DEFAULT NULL,
    private Boolean use_yn     = null;  //`use_yn`    BIT(1) NULL DEFAULT NULL,
    private Integer authid     = null;  //`authid`    INT(11) NULL DEFAULT NULL,
    

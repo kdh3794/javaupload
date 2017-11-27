@@ -13,7 +13,7 @@ public interface IBoard {
     int deleteBoard(ModelBoard boardcd, ModelBoard boardnm, ModelBoard UseYN) throws Exception;
     int getBoardSearch(ModelBoard boardcd, ModelBoard boardnm) throws Exception;
     int getBoardTotalRecord(ModelBoard boardcd, ModelBoard boardnm) throws Exception;
-    List<ModelBoard> getBoardPaging(ModelBoard boardcd, ModelBoard bordnm, String start, int end) throws Exception;
+    List<ModelBoard> getBoardPaging(String boardcd, String searchWord, int start, int end) throws Exception;
     List<ModelBoard> insertBoardList(ModelBoard board) throws Exception;
     int getArticleTotalRecord(ModelBoard serchWord) throws Exception;
     List<ModelBoard> getArticleList(ModelBoard serchWord, String start, int end) throws Exception;

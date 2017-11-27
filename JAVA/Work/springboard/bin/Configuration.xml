@@ -11,14 +11,14 @@
     
     <!-- Model 클래스의 패키지명을 등록한다. -->
     <typeAliases>
-        <package name="java23.mybatis.model" />
+        <package name="board.model" />
     </typeAliases>
     
 
     <!-- sql 이 저장되는 xml 파일 등록: 주의 사항은 경로로 설정해야 한다. -->
     <mappers>
-        <mapper resource="mapper/Board.xml" />
-        <mapper resource="mapper/User.xml" />
+        <!-- <mapper resource="mapper/mapperBoard.xml" /> -->
+        <mapper resource="mapper/mapperUser.xml" />
     </mappers>
     
 </configuration>
