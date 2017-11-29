@@ -60,38 +60,56 @@ public class TestServiceUser {
   
     @Test
     public void testUpdateUserInfo() throws Exception {
-        ModelUser whereuser = new ModelUser();
-        whereuser.setName("kdh");
+        ModelUser searchValue = new ModelUser();
+        searchValue.setUserid("2");
         
-        ModelUser setuser = new ModelUser();
-        setuser.setName("test12");
-        int rs = service.updateUserInfo(whereuser, setuser);
+        ModelUser updateValue = new ModelUser();
+        
+        updateValue.setName("tester3");
+        updateValue.setEmail("naver");
+        updateValue.setMobile("112233");
+        
+        
+        int rs = service.updateUserInfo(searchValue, updateValue);
         assertTrue(rs>=0);
     }
     
     @Test
-    public void testUpdatePasswd() {
-        fail("Not yet implemented");
+    public void testUpdatePasswd() throws Exception {
+        
+      int rs = service.updatePasswd("2", "", "1234"  );
+      assertEquals(1, rs);
     }
     
     @Test
-    public void testDeleteUser() {
-        fail("Not yet implemented");
+    public void testDeleteUser() throws Exception {
+        ModelUser user = new ModelUser();
+        user.setUserid("1");
+        int rs = service.deleteUser(user);
+        assertTrue(rs >= 0);
     }
     
     @Test
-    public void testSelectUserOne() {
-        fail("Not yet implemented");
+    public void testSelectUserOne() throws Exception {
+       ModelUser user = new ModelUser();
+       user.setUserno(8);
+       ModelUser rs = service.selectUserOne(user);
+       assertNotNull(rs);
     }
     
     @Test
-    public void testSelectUserList() {
-        fail("Not yet implemented");
+    public void testSelectUserList() throws Exception {
+       ModelUser user = new ModelUser();
+       user.setName("tester3");
+       List<ModelUser> rs = service.selectUserList(user);
+       assertNotNull(rs);
     }
     
     @Test
-    public void testCheckuserid() {
-        fail("Not yet implemented");
+    public void testCheckuserid() throws Exception {
+       int rs = service.checkuserid("2");
+       
+       assertEquals(0, rs);
     }
     
 }

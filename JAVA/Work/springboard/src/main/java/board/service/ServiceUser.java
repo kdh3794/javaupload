@@ -72,10 +72,11 @@ public class ServiceUser implements IServiceUser {
     }
     
     @Override
-    public int updatePasswd(ModelUser user) throws Exception {
+    public int updatePasswd(String userid, String currentPasswd,
+            String newPasswd) throws Exception {
         int result = -1;
         try {
-            result = dao.updatePasswd(user);
+            result = dao.updatePasswd(userid, currentPasswd, newPasswd);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -98,8 +99,8 @@ public class ServiceUser implements IServiceUser {
     }
     
     @Override
-    public List<ModelUser> selectUserOne(ModelUser user) throws Exception {
-        List<ModelUser> result = null;
+    public ModelUser selectUserOne(ModelUser user) throws Exception {
+        ModelUser result = null;
         try {
             result = dao.selectUserOne(user);
         } catch (Exception e) {

@@ -44,8 +44,8 @@ public class DaoUser implements IUser {
     public int updateUserInfo(ModelUser searchValue, ModelUser updateValue)
             throws Exception {
         int result = -1;
-        Map<String, Object> map = new HashMap<>();
-        map.put("serchValue", searchValue);
+        Map<String, ModelUser> map = new HashMap<>();
+        map.put("searchValue", searchValue);
         map.put("updateValue", updateValue);
         result = session.update("mapper.mapperUser.updateUserInfo", map);
         return result;
@@ -54,15 +54,16 @@ public class DaoUser implements IUser {
     }
     
     @Override
-    public int updatePasswd(ModelUser user) throws Exception {
-     int result = -1;
-     Map<String, Object> map = new HashMap<>();
-     map.put("user", user);
-     result = session.update("mapper.mapperUser.updatePasswd", map);
-     
+    public int updatePasswd(String userid, String currentPasswd,
+            String newPasswd) throws Exception {
+        int result = -1;
+        Map<String, Object> map = new HashMap<>();
+        map.put("userid", userid);
+        map.put("currentPasswd", currentPasswd);
+        map.put("newPasswd", newPasswd);
+        result = session.update("mapper.mapperUser.updatePasswd", map);
         return result;
     }
-    
     @Override
     public int deleteUser(ModelUser user) throws Exception {
         int result = -1;
@@ -71,9 +72,9 @@ public class DaoUser implements IUser {
     }
     
     @Override
-    public List<ModelUser> selectUserOne(ModelUser user) throws Exception {
-        List<ModelUser> result = null;
-        result = session.selectOne("mapper.mapperBook.selectUserOne", user);
+    public ModelUser selectUserOne(ModelUser user) throws Exception {
+        ModelUser result = null;
+        result = session.selectOne("mapper.mapperUser.selectUserOne", user);
         return result;
     }
     
