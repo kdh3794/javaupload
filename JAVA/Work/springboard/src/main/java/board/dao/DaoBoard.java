@@ -30,16 +30,16 @@ public class DaoBoard implements IBoard {
     }
     
     @Override
-    public List<ModelBoard> getBoardOne(String boardcd) throws Exception {
-       List<ModelBoard> result = null;
-       result = session.selectList("mapper.mapperBoard.getBoardOne", boardcd);
+    public ModelBoard getBoardOne(String boardcd) throws Exception {
+       ModelBoard result = null;
+       result = session.selectOne("mapper.mapperBoard.getBoardOne", boardcd);
         return result;
     }
     
     @Override
     public List<ModelBoard> getBoardList() throws Exception {
         List<ModelBoard> result = null;
-        result = session.selectList("mappre.mapperBoard.getBoardList");
+        result = session.selectList("mapper.mapperBoard.getBoardList");
         return result;
     }
     
@@ -55,7 +55,7 @@ public class DaoBoard implements IBoard {
             throws Exception {
         int result = -1;
         Map<String, ModelBoard> map = new HashMap<>();
-        map.put("serchValue", searchValue);
+        map.put("searchValue", searchValue);
         map.put("updateValue", updateValue);
         result = session.update("mapper.mapperBoard.updateBoard", map);
         return result;
@@ -92,6 +92,7 @@ public class DaoBoard implements IBoard {
     @Override
     public List<ModelBoard> getBoardPaging(String boardcd, String searchWord,
             int start, int end) throws Exception {
+        
         List<ModelBoard> result = null;
         Map<String, Object> map = new HashMap<>();
         map.put("boardcd", boardcd);
@@ -257,21 +258,25 @@ public class DaoBoard implements IBoard {
     
     @Override
     public int insertComment(ModelComments comments) throws Exception {
-       ModelComments result = -1;
-        result = session.insert("mapper.mapperBoard.insertAttachFile", attachfile);
+       int result = -1;
+        result = session.insert("mapper.mapperBoard.insertAttachFile", comments);
          return result;
     }
     
     @Override
     public int updateComment(ModelComments updateValue,
             ModelComments searchValue) throws Exception {
-        // TODO Auto-generated method stub
+        int result = -1;
+        Map<String, ModelComments> map = new HashMap<>();
+        map.put("updateValue", updateValue);
+        map.put("searchValue", searchValue);
         return 0;
     }
     
     @Override
     public int deleteComment(ModelComments comments) throws Exception {
-        // TODO Auto-generated method stub
+        int result = -1;
+        result = session.delete("mapper.mapperBoard.deleteComment", comments);
         return 0;
     }
     

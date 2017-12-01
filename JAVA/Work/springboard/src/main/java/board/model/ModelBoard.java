@@ -10,6 +10,8 @@ public class ModelBoard {
     private java.util.Date InsertDT = null;
     private String UpdateUID="";
     private java.util.Date UpdateDT=null;
+    
+    
     public String getBoardcd() {
         return boardcd;
     }

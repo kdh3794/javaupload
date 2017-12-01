@@ -2,7 +2,7 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mapper.mysql.mapperBoard">
+<mapper namespace="mapper.mapperBoard">
     
     <select id="getBoardName" parameterType="string" resultType="string">        
         SELECT boardnm
@@ -20,7 +20,7 @@
         SELECT boardcd, boardnm, UseYN, InsertUID, InsertDT, UpdateUID, UpdateDT
           FROM TB_Bbs_Board
         ORDER BY boardnm
-    </select> >
+    </select> 
         
     <insert id="insertBoard" parameterType="ModelBoard">
         INSERT INTO 
@@ -78,8 +78,8 @@
             <if test="boardcd != null and boardcd != ''">
             AND boardcd = #{boardcd}
             </if>
-            <if test="boardnm != null and boardnm != ''">
-            AND boardnm LIKE #{searchWord} 
+            <if test="searchWord != null and searchWord != ''">
+            AND boardnm LIKE  #{searchWord} 
             </if>
     </select>
     
@@ -96,7 +96,7 @@
                         <if test="boardcd != null and boardcd != ''">
                         AND boardcd = #{boardcd}
                         </if>
-                        <if test="boardnm != null and boardnm != ''">
+                        <if test="searchWord != null and searchWord != ''">
                         AND boardnm LIKE #{searchWord} 
                         </if>
                     GROUP BY boardcd, boardnm, UseYN
