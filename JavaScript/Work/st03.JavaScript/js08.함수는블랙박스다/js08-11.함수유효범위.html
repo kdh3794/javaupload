@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <title>함수 유효 범위</title>
-    <script >
-        console.log( x ); // ???
+    <script type="text/javascript">
+        console.log(x);
         var x = 1;
-        console.log( '---------' ); // ???
+        console.log('------');
 
-        var outer = function ( ) {
-            console.log( x ); // ???
-            console.log( y ); // ???
+        var outer = function(){
+            console.log(x);
+            console.log(y);
             var y = 5;
-            console.log( y ); // ???
+            console.log(y);
         }
-
         outer();
     </script>
 </head>
@@ -22,3 +21,6 @@
 
 </body>
 </html>
+
+
+

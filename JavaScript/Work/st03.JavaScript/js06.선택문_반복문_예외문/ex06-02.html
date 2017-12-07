@@ -3,23 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>if~else 예제</title>
-    <script>
-        var value = prompt('숫자를 입력하세요', '0');
-        console.log( value ); // vaule 는 문자다.
 
-        // 문자열인 value를 숫자로 바꾼다.
-        // 변수 선언 : n
-        var n = Number( value );
+    <script type="text/javascript">
+        for(;;){
+        var value = prompt('점수를 입력하세요', '0');
+        console.log(value);
 
-        // n가 60이상이면 합격 출력.
-        if( n  >= 100 ) {
-            console.log('large');
+        var grade = Number (value);
+
+
+
+
+        if(grade >= 90) {
+            alert("점수 " +value + "\n A");
+            console.log("A");
+
+
         }
-        else {
-            console.log('small');
+
+        else if(grade >= 80) {
+            alert("점수 " +value + "\n V");
+
+            console.log("B");
+
         }
+        else if(grade >= 70) {
+            alert("점수 " +value + "\n C");
+            console.log("C");
+
+        }
+        else if(grade >= 60) {
+            alert("점수 " +value + "\n D");
+            console.log("D");
+
+        }
+
+        else{
+            alert("점수 " +value + "\n F");
+            console.log("F")
+
+
+
+        }
+
+
+
+        console.log("재수강")
+
+    }
+
+
     </script>
+
 </head>
 <body>
 </body>
 </html>
+
+
+

@@ -2,55 +2,58 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-	<script>
-        var MYAPP = { timer: null /* 타이머 ID를 대입하기 위한 글로벌 변수 */ };
+     <title>Title</title>
+    <script type="text/javascript">
+        var timer = null;
+        window.onload = function(){
 
-	    // 페이지 로드 시에 타이머 처리를 등록
-	    window.onload = function () {
+        // 버튼의 이벤트 핸들러 작성 : 2개
+        var start = document.getElementById("start");
+        start.onclick = function(e){
+            //1. start버튼의 활성화
+            //2. stop 버튼의 활성화
+            //3. 시계 표시 시작.
+            start.disabled = true;
+            stop.disabled = false;
+            timer = setInterval (function() {
+            var t = new Date().toLocaleTimeString();
+            var result = document.getElementById("result");
+            result.innerHTML = t;
 
-            // start 에 이벤트 핸들러 설정
-            MYAPP.start = document.getElementById('start');
-            MYAPP.start.onclick = function (event) {
-                // stop 버튼 활성화
-                MYAPP.stop.disabled = false;
-
-                // start 버튼 비활성화
-                MYAPP.start.disabled = true;
-
-                MYAPP.timer = window.setInterval(
-                        // 현재 시각을 <div id="result"> 태그에 표시(1000밀리초마다 갱신)
-                        function () {
-                            var dat = new Date();
-                            document.getElementById("result").innerHTML = dat.toLocaleTimeString();
-                        },
-                        1000
-                );
-            };
+        }, 1000 );
 
 
-            // stop 에 이벤트 핸들러 설정
-            MYAPP.stop = document.getElementById('stop');
-            MYAPP.stop.onclick = function (event) {
-                // stop 버튼 비활성화
-                MYAPP.stop.disabled = true;
+        };
+        var stop = document.getElementById("stop");
+        stop.onclick = function(e){
 
-                // start 버튼 활성화
-                MYAPP.start.disabled = false;
+             //1. start버튼의 활성화
+            //2. stop 버튼의 비활성화
+            //3. 시계 표시 중지.
 
-                window.clearInterval( MYAPP.timer );
-            };
-		};
+            start.disabled = false;
+            stop.disabled = true;
+            clearInterval(timer);
 
-	</script>
+        };
+
+
+    };
+    </script>
+
 </head>
 
 <body>
 <p>
     <input id='start' type="button" value="타이머 시작" />
-    <input id='stop'  type="button" value="타이머 정지" />
+    <input id='stop'  type="button" value="타이머 정지" disabled="disabled" />
     <div id="result">
 	</div>
 </p>
 </body>
+
+
 </html>
+
+
+
