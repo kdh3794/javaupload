@@ -14,8 +14,55 @@
         .white  { background: white;  }
         .gray   { background: gray;   }
     </style>
-    
-    
+    <!-- 임포트 -->
+    <script type="text/javascript" src="../jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(e){
+            $('#value_read').click(function(event ){
+                var text = $('#text').val();
+                alert(text);
+            } );
+            $('#value_create').click(function(event){
+                var text = $('#text').val() + ' > 추가';
+                $('#text').val(text);
+
+            } );
+            $('#value_update').click(function(event){
+                var text = $(this).text();
+                $('#text').val(text);
+
+            });
+            $('#value_delete').click(function(event ){
+                $('#text').val('');
+
+            });
+
+            $('#prop_read').click(function(event ) {
+
+                var rlt=$('input[name=aaa]').prop('checked');
+
+                alert( rlt );
+
+            });
+            $('#prop_create').click(function(event ) {
+                $('input[name=bbb]').prop('checked', true);
+
+
+            });
+            $('#prop_update').click(function(event ) {
+                $('input[name=aaa]').prop('checked', false);
+
+            });
+            $('#prop_delete').click(function(event ) {
+                $('input[name=ccc]').prop('disabled', false);
+
+            });
+
+        })
+
+    </script>
+
+
 </head>
 <body>
 
@@ -24,7 +71,7 @@
     <hr>
 
     <div>
-        <h3>value attribute CRUD</h3>
+        <h3>value attribute CRUD : val()</h3>
         <input id="text" type="text" value="값 없음" size="50" placeholder='값을 입력하세요'>
         <br>
         <button id="value_read"  >value 읽기(R)</button>
@@ -36,7 +83,7 @@
     <hr>
 
     <div>
-        <h3>프로퍼티 CRUD</h3>
+        <h3>프로퍼티 CRUD : prop()</h3>
         <input type='checkbox' name='aaa' checked />
         <input type='radio'    name='bbb' value='aaaa1' />
         <input type='text'     name='ccc' value='aaaa1' disabled />

@@ -7,8 +7,25 @@
         #panel { width: 600px; height: 400px; border: 1px solid #999; position: relative; }
         #fish { position: absolute; left: 250px; top: 150px; }
     </style>
-    
-    
+    <!-- jquery 임포트 -->
+    <script type="text/javascript" src="../jquery-3.2.1.js"></script>
+    <script>
+      $(document).ready(function(){
+
+            var $fish = $("#fish");
+            var $fishImg = $("#fish");
+
+            var x=50;
+            var sw=50;
+            // 물고기 위치를 초기화.
+            $fish.css("left", 50);
+
+
+            $("#btnStart").click(function(){
+
+
+    </script>
+
 </head>
 
 <body>

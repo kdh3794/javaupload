@@ -9,8 +9,26 @@
 	    td    { border: 1px solid #AAA; width: 20px; height: 20px; }
 	</style>
 
-	
-	
+    <script type="text/javascript" src="../jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function($) {
+     $('#checked').click(function(event) {
+        $('input:checkbox:checked').css('outline', '1px blue dotted');
+    });
+     $('#radio').click(function(event) {
+        $('input:radio:checked').css('outline', '1px blue dotted');
+     });
+     $('#selected').click(function(event) {
+        $('input[hobby='music']').css('outline', '2px blue dotted');
+     });
+     $('#hobby').click(function(event) {
+
+     });
+ });
+</script>
+
+
+
 </head>
 <body>
     <h2>Filter Selector</h2>

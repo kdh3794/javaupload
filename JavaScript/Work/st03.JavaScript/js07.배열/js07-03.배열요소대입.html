@@ -1,13 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>배열 요소 추가</title>
+    <script type="text/javascript">
+        var numbers = [];
+        numbers[0] = 0;
+
+        numbers[3] = undefined;
+        numbers[4] = null;
+        numbers[5] = [11, 12, 13];
+
+        console.log('numbers[0]  = ' + numbers[0]);
+        console.log('numbers[1]  = ' + numbers[1]);
+        console.log('numbers[2]  = ' + numbers[2]);
+        console.log('numbers[3]  = ' + numbers[3]);
+        console.log('numbers[4]  = ' + numbers[4]);
+        console.log('numbers[5]  = ' + numbers[5]);
+        console.log('numbers[6]  = ' + numbers[6]); //배열에 추가 안됨. 안 만들어 짐.
+        console.log('numbers.length  = ' + numbers.length);
+
+
+
+
+        //for in 문  .  입력한 배열 값만 출력.
+        //          for 문을 사용할 시에는 입력 되지 않은 중간 값도 출력.
+        for(var i in numbers){
+
+            console.log('numbers['+i+']' + numbers[i])
+
+
+        }
+
+
+
+
+
+    </script>
+
+
 
 </head>
 <body>
 
 </body>
 </html>
+
 
 

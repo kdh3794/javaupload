@@ -6,8 +6,62 @@
         div { padding: 5px 5px 5px 5px }
         .item{float:left; width:100px; }
     </style>
-    
-    
+        <script type="text/javascript" src="../jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+
+
+            $("#regBtn").click(function(e){
+                if( $('#userId').val() === '' ){
+                var msg = '아이디를 입력하세요';
+                $('label[name="userId"]').text(msg);
+                $('#userId').focus();
+                return false;
+            }
+
+                if( $('#userName').val() === '' ){
+                var msg = '이름을 입력하세요';
+                $('label[name="userName"]').text(msg);
+                $('#userName').focus();
+                return false;
+            }
+
+                  if( $('#pwd').val() === '' ){
+                var msg = '암호를 입력하세요';
+                $('label[name="pwd"]').text(msg);
+                $('#pwd').focus();
+                return false;
+            }
+
+                  if( $('#pwdConfirm').val() === '' ){
+                var msg = '암호를 입력하세요';
+                $('label[name="pwdConfirm"]').text(msg);
+                $('#pwdConfirm').focus();
+                return false;
+
+
+            }
+            $('form').attr({action:'http://www.naver.com'}).submit();
+
+
+
+            });
+
+               $('#iniBtn').click(function(event) {
+
+                $('form').each(function(event){
+                    this.reset();
+                });
+
+
+            });
+
+        });
+
+
+    </script>
+
 </head>
 <body>
 <form name='fm'
@@ -17,7 +71,7 @@
     <div>
         <span class="item"> 아이디 * </span>
         <input id="userId" name="userId" type="text" placeholder='아이디를 입력하시오'>
-        <label name="userId" ></label>
+        <label name="userId" >   </label>
     </div>
     <div>
         <span class="item"> 이름   * </span>
