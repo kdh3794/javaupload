@@ -11,8 +11,63 @@
         #center p { margin: 10px; background: #b96dff; }
         .border { border: 2px dashed #ffb42e; margin: 5px; display:block; background: #b96dff; }
     </style>
-    
-    
+    <!-- 임포트 -->
+    <script type="text/javascript" src="../jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.html').click(function(event){
+                $('#center').html('<p>변경된 텍스트</p>').addClass('Selected');
+
+
+            })
+             $('.prepend').click(function(event){
+                $('#center').prepend('<p> prepend </p>').children().first().addClass('added');
+
+            })
+              $('.append').click(function(event){
+                //$('#center').prepend('<p class="added"> prepend</p>');
+                 $('#center').prepend('<p> prepend </p>').children(':last').addClass('added');
+
+
+            })
+              $('.before').click(function(event){
+                $('#center').before('<p> before </p>').prev().addClass('added');
+
+
+            })
+               $('.after').click(function(event){
+                 $('#center').after('<p> after </p>').next().addClass('added');
+            })
+                $('.wrap').click(function(event){
+                    $('#center').wrap('<span class="border"></span>');
+
+
+            })
+                 $('.replace').click(function(event){
+                    $('.two').replaceWith('<div class="border">replace text</div>');
+
+            })
+                  $('.clone').click(function(event){
+                    var clone = $('#center').clone();
+
+                    $('result').html(clone);
+
+            })
+                   $('.empty').click(function(event){
+                    // $('p').text('') === $('p').empty() === $('p').html('')
+                    //$('p').html('&nbsp;');
+                    $('p').empty().html('&nbsp;');
+
+            })
+                    $('.remove').click(function(event){
+                        $('p').remove();
+
+            })
+        });
+    </script>
+
+
+
 </head>
 <body>
     <p>DOM 조작 메서드</p>

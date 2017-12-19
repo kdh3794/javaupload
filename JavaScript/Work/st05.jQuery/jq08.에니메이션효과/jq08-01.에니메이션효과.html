@@ -26,9 +26,124 @@
         .rightbtn { margin-left:290px;margin-top:10px; }
     </style>
 
-    
-    
-    
+    <!-- 임포트 -->
+    <script type="text/javascript" src="../jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../jquery.easing.1.3.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('span.showhide:eq(0)').click(function(event){
+                $('p.showhide').show();
+
+            });
+            $('span.showhide:eq(1)').click(function(event){
+                $('p.showhide').hide();
+
+            });
+            $('span.showhide:eq(2)').click(function(event){
+                $('p.showhide').toggle();
+
+            });
+
+            $('span.easing:eq(0)').click(function(event){
+                var easing = $('select>option:selected').text();
+                $('p.easing').show(2000, easing);
+
+            });
+            $('span.easing:eq(1)').click(function(event){
+         var easing = $('select>option:selected').text();
+                $('p.easing').hide(2000, easing);
+
+            });
+            $('span.easing:eq(2)').click(function(event){
+          var easing = $('select>option:selected').text();
+                $('p.easing').toggle(2000, easing);
+
+            });
+                 $('span.slide:eq(0)').click(function(event) {
+                        var easing = $('select>option:selected').text();
+                        $('div.slide').slideUp(2000, easing);
+                        $(this).css('background-color', 'yellow');
+                 });
+                $('span.slide:eq(1)').click(function(event) {
+                     var easing = $('select>option:selected').text();
+                        $('div.slide').hide(2000, function(){
+                        $(this).css('background-color', '');
+
+                 })
+                    });
+                $('span.slide:eq(2)').click(function(event) {
+                     var easing = $('select>option:selected').text();
+                     var params = {
+                        duration:1000
+                        ,easing: $('select>option:selected').text()
+                        ,complete : function(){
+                            if ($('p.easing').css('background-color') === 'yellow'){
+                                $('p.easing').css('background-color', '');
+                            }
+
+                        else{
+                            $('p.easing').css('background-color', 'yellow');
+                        }
+                    }
+
+        }
+            })
+
+
+                 $('span.fade:eq(0)').click(function(event) {
+                    $('div.fade').fadeIn(1000, function(){
+                        $('p.fade').show();
+
+                    })
+
+                 });
+                  $('span.fade:eq(1)').click(function(event) {
+                      $('div.fade').fadeOut(1000, function(){
+                        $('p.fade').hide();
+
+                    })
+
+                 });
+                   $('span.fade:eq(2)').click(function(event) {
+                    $('div.fade').fadeToggle(1000, function(){
+                        $('p.fade').toggle();
+
+                    })
+
+                 });
+                    $('span.fade:eq(3)').click(function(event) {
+                        var opacity = $('div.fade').css('opacity');
+                        if(opacity === '0.5'){
+                        $('div.fade').fadeTo(1000, 0);
+                    }
+                    else {
+                        $('div.fade').fadeTo(1000, 0.5);
+                    }
+
+
+
+
+                    })
+                    //사용자 효과
+                    $('.leftbtn').click(function(event) {
+                        $('#leftimage').animate({width:0});
+                        $('#rightimage').animate({width:200});
+                    });
+                    $('.rightbtn').click(function(event) {
+                        $('#leftimage').animate({width:200});
+                        $('#rightimage').animate({width:0});
+                    });
+
+                 });
+
+
+
+
+
+        </script>
+
+
 
 </head>
 <body>
@@ -112,7 +227,7 @@
     <span class="fade"> fadeTo()     </span>
     <br>
 
-    <p>
+    <p class="fade">
         불투명도를 점점 높여서 보이도록 한다.
         speed를 fast, normal, slow 또는 0이상의 숫자(밀리세컨드 단위)를 준다.
         에니메이션이 끝난 후에 실행할 함수를 지정한다.
@@ -121,7 +236,7 @@
         <p class="fade">S U C C E S S !!!</p>
     </div>
     <hr>
-<!--
+
     <h2>사용자 효과</h2>
     <div style="float:left;">
         <div id="direction">
@@ -135,7 +250,7 @@
             </div>
         </div>
     </div>
-    -->
+
 </body>
 </html>
 

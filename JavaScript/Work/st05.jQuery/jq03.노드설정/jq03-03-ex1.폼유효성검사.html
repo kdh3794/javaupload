@@ -9,53 +9,50 @@
         <script type="text/javascript" src="../jquery-3.2.1.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+               $('#regBtn').click(function(){
 
+                if($('#userId').val()===''){
+                    var msg = '아이디 입력';
+                    $('label[name="userId"]').text(msg);
+                    $('#userId').focus();
+                    return false;
+                 }
+                 else if($('#userName').val()===''){
+                    var msg = '이름 입력';
+                    $('label[name="userName"]').text(msg);
+                    $('#userName').focus();
+                    return false;
+                }
 
+                 else if($('#pwd').val()===''){
+                    var msg = '암호 입력';
+                    $('label[name="pwd"]').text(msg);
+                    $('#pwd').focus();
+                    return false;
+                }
 
-            $("#regBtn").click(function(e){
-                if( $('#userId').val() === '' ){
-                var msg = '아이디를 입력하세요';
-                $('label[name="userId"]').text(msg);
-                $('#userId').focus();
-                return false;
-            }
+                else if($('#pwdConfirm').val()===''){
+                    var msg = '암호 입력';
+                    $('label[name="pwdConfirm"]').text(msg);
+                    $('#pwdConfirm').focus();
+                    return false;
+                }
+                else
+                {
 
-                if( $('#userName').val() === '' ){
-                var msg = '이름을 입력하세요';
-                $('label[name="userName"]').text(msg);
-                $('#userName').focus();
-                return false;
-            }
-
-                  if( $('#pwd').val() === '' ){
-                var msg = '암호를 입력하세요';
-                $('label[name="pwd"]').text(msg);
-                $('#pwd').focus();
-                return false;
-            }
-
-                  if( $('#pwdConfirm').val() === '' ){
-                var msg = '암호를 입력하세요';
-                $('label[name="pwdConfirm"]').text(msg);
-                $('#pwdConfirm').focus();
-                return false;
-
-
-            }
-            $('form').attr({action:'http://www.naver.com'}).submit();
-
-
-
+                }
+                $('form').submit(); // submit 버튼이 없으므로 여기서 설정.
             });
 
-               $('#iniBtn').click(function(event) {
-
-                $('form').each(function(event){
+               $('#iniBtn').click(function(){
+                $('form').each(function(){
                     this.reset();
                 });
 
 
-            });
+               });
+
+
 
         });
 

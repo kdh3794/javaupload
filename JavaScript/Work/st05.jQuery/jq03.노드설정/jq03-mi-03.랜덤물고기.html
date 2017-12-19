@@ -10,18 +10,34 @@
     <!-- jquery 임포트 -->
     <script type="text/javascript" src="../jquery-3.2.1.js"></script>
     <script>
-      $(document).ready(function(){
-
+        window.onload = function() {
+            //물고기 노드 구하기.
             var $fish = $("#fish");
-            var $fishImg = $("#fish");
+            //패널의 너비와 높이 구하기
+            var panelWidth = parseInt($("#panel").css("width"));
 
-            var x=50;
-            var sw=50;
-            // 물고기 위치를 초기화.
-            $fish.css("left", 50);
+            var panelHeight = parseInt($("#panel").css("height"));
+
+            //물고기가 최대로 움직일 영역구하기
+            panelWidth = panelWidth - parseInt($fish.css("width"));
+            panelHeight = panelHeight - parseInt($fish.css("height"));
+
+            $("#btnStart").click(function(event) {
+                //랜덤하게 물고기 위치 구하기
+                var left = parseInt(Math.random() * panelWidth);
+                var top = parseInt(Math.random() * panelHeight);
+
+                //물고기 위치 설정하기
+                $fish.css({
+                    left : left,
+                    top : top
+                })
+            });
 
 
-            $("#btnStart").click(function(){
+
+
+        };
 
 
     </script>

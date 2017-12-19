@@ -5,7 +5,53 @@
 
     <script type="text/javascript" src="../jquery-3.2.1.js"></script>
     <script type="text/javascript">
+     $(document).ready(function(e) {
+            $('#btn1').click(function(event) {
+                var time = new Date()
+                var day = time.getDay()
+                if(0==day){
+                    document.bgColor="red";
+                }
+                else if(1==day){
+                    document.bgColor="yellow";
+                }
+                else if(2==day){
+                    document.bgColor="green";
+                }
+                else if(3==day){
+                    document.bgColor="gray";
+                }
+                else if(4==day){
+                    document.bgColor="pink";
+                }
+                else if(5==day){
+                    document.bgColor="gray";
+                }
+                else {
+                    document.bgColor="orange";
+                }
 
+
+
+            });
+              $('#btn2').click(function(event) {
+
+                $('#p1').text("반갑습니다")
+            });
+              $('#btn3').click(function(event) {
+
+                $('#div1').text("")
+            });
+               $('#btn4').on({
+              "mouseover focus":function(){
+            $(this).css("background-color","black")
+            $(this).css("color","white");
+           }
+        });
+               $('a[name ~= "naver"]').css("color","orange"); //글자 색 변경 안됨.
+
+
+           });
 
     </script>
 </head>
