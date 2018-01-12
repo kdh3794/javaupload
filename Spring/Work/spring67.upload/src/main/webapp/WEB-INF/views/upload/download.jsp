@@ -21,7 +21,7 @@
         response.setContentType("text/plain");
     } else {
         response.setContentType("application/octet-stream");
-    }
+        }
     
     response.setContentLength((int) file.length());
     
