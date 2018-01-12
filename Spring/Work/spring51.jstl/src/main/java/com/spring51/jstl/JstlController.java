@@ -35,7 +35,7 @@ public class JstlController {
 	 public String jstl02(Model model) {
 	 logger.info("jstl02");
 
-	 int num1 = 7;
+	 int num1 = 7;	 
 	 int num2 = 9;
 
 	 model.addAttribute("num1", num1);
@@ -103,18 +103,38 @@ public class JstlController {
 
 	 return "jstl/jstl33import";
 	 }
+	 
 	 @RequestMapping(value = "/jstl/jstl41", method = RequestMethod.GET)
 	 public String jstl41(Model model) {
 	     logger.info("jstl41");
 
 	 return "jstl/jstl41";
 	 }
+	 
+	   @RequestMapping(value = "/jstl/jstl42forward", method = RequestMethod.GET)
+	     public String jstl42forward(Model model) {
+	       
+
+	     return "jstl/jstl42forward";
+	     }
 	 @RequestMapping(value = "/jstl/jstl61", method = RequestMethod.GET)
 	 public String jstl61(Model model) {
 	 logger.info("jstl61");
 
 	 return "jstl/jstl61";
 	 } 
+	 @RequestMapping(value = "/jstl/jstl32includepage", method = RequestMethod.GET)
+     public String jstl32includepage(Model model) {
+    
+
+     return "jstl/jstl32includepage";
+     } 
+	 @RequestMapping(value = "/jstl/jstl32sub", method = RequestMethod.GET)
+     public String jstl32sub(Model model) {     
+
+     return "jstl/jstl32sub";
+     } 
+
 
 
 	  @RequestMapping(value = "/jstl/jstl61sub", method = RequestMethod.GET)
@@ -166,6 +186,13 @@ public class JstlController {
 	  logger.info("el04sub");
 
 	  return "el/el04sub";
+	  }
+
+	  @RequestMapping(value = "/jstl/jstlpr", method ={RequestMethod.GET, RequestMethod.POST})
+	  public String jstlpr(Model model) {
+	  logger.info("jstlpr");
+
+	  return "jstl/jstlpr";
 	  }
 
 

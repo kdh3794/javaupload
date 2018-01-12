@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -71,6 +71,14 @@
         <dd> <a href="./jstl/jstl74select"      target="_blank">jstl과 SELECT </a> </dd>
     </dl>
     <hr />
+    <dl>
+        <dt>EL실습</dt>
+        <dd> <a href="/el/el01" target="_blank" > /el/el01 </a></dd>
+        <dd> <a href="/el/el02" target="_blank" > /el/el02 </a></dd>
+        <dd> <a href="/el/el03?id=pinksung" target="_blank" > /el/el03?id=pinksung </a></dd>
+글 옵션
+        
+    </dl>
    
 <div id="static_include"> 
     <h4>정적 include</h4>          
@@ -136,3 +144,4 @@
 
 </body>
 </html>
+

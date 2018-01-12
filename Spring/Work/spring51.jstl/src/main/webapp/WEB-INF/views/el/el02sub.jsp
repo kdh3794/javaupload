@@ -15,6 +15,7 @@
  <br> 비밀번호 :
  <%=request.getParameter("pwd")%>
  <br>
+ <%=request.getParameter("num")%> -  <%=request.getParameter("num2")%>
  <br> 당신이 입력한 정보입니다(EL 방식)
  <hr>
  아이디 : ${param.id}
