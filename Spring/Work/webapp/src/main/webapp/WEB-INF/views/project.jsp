@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/app_icon.png" />
     <link rel="apple-touch-icon-precomposed" href="../../resources/images/app_icon.png" />
 
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="../../resources/css/common.css">
 
 
     <!-- 임포트 -->

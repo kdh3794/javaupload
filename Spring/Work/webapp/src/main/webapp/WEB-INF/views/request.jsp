@@ -8,7 +8,7 @@
     <title>Mobile Project</title>
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../resources/images/app_icon.png" />
     <link rel="apple-touch-icon-precomposed" href="../../resources/images/app_icon.png" />
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="../../resources/css/common.css">
 
         <!-- 임포트 -->
 <script type="text/javascript" src=".../../resources/js/jquery-3.2.1.js"></script>
@@ -29,7 +29,7 @@
 <body>
 
 <section id="page1" data-role="page">
-    <div w3-include-header="header.jsp"></div>
+    <div w3-include-header="header"></div>
 
     <div class="content" data-role="content">
         <div class="s_main">

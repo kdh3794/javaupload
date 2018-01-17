@@ -16,7 +16,7 @@
 
 <script type="text/javascript" src="../../resources/js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="../../resources/js/main.js"></script>
-<script type="text/javascript" src="viedo.mp4"></script>
+<script type="video/mp4" src="../../resources/video/viedo.mp4"></script>
 
 <script type="text/javascript">
 function movieDialog(str) {

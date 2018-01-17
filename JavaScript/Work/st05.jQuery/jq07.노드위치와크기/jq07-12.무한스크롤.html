@@ -15,27 +15,26 @@
 
                 for(var i = 0; i<20; i++){
                     count = count+1;
-
-             $('div').append('<h1>infinity scroll'+count+ ' #</h1>');
-}
+                    $('div').append('<h1>infinity scroll'+count+ ' #</h1>');
+                }
 
             });
+
             $(window).scroll(function(event) {
                 //바닥
                 var diff = $(document).height() - $(window).scrollTop() - $(window).height();
                 if(diff < 20){
-                for(var i = 0; i<20; i++){
-                    count = count+1;
+                    for(var i = 0; i<20; i++){
+                        count = count+1;
 
-             $('div').append('<h1>infinity scroll'+count+ ' #</h1>');
-            }
-        }
-    });
-
+                        $('div').append('<h1>infinity scroll'+count+ ' #</h1>');
+                    }
+                }
             });
 
+        });
 
-                </script>
+    </script>
 <body>
     <button>클릭하면 &lt;h1&gt;infinity scroll&lt;h1&gt;를 20개 추가하시오.
     </button>

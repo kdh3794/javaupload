@@ -25,10 +25,10 @@
 
         $('dd').hide();
         $('dt').click(function(event){
-         $('dt').removeClass('selected');
-         $(this).addClass('selected');
+           $('dt').removeClass('selected');
+           $(this).addClass('selected');
 
-         if($(this).next().is(":visible")){
+           if($(this).next().is(":visible")){
             $(this).next().slideUp(1000);
         } else {
             $("dd").hide();

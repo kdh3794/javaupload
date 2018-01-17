@@ -145,26 +145,24 @@ public class UploadController {
         
         return "upload/fileuploadlist";
     }
-    /*http://localhost/opload/oploadfilelist*/
+    /* http://localhost/opload/oploadfilelist */
     
-    @RequestMapping(value="/upload/fileuploadlist", method=RequestMethod.GET)
+    @RequestMapping(value = "/upload/fileuploadlist", method = RequestMethod.GET)
     public String download(Model model) {
-     logger.info("fileuploadlist");
-    List<ModelUploadFile> result = svrupload.getUploadFile(null);
-    model.addAttribute("files", result);
-    
-    return "upload/fileuploadlist";
+        logger.info("fileuploadlist");
+        List<ModelUploadFile> result = svrupload.getUploadFile(null);
+        model.addAttribute("files", result);
+        
+        return "upload/fileuploadlist";
     }
     
-    @RequestMapping(value="/download", method=RequestMethod.POST)
-    public String download(Model model
-    , @RequestParam String filenametemp
-    , @RequestParam String filenameorig ) {
-     logger.info("download");
-    model.addAttribute( "filenameorig", filenameorig );
-    model.addAttribute( "filenametemp", filenametemp );
-    return "upload/download";
+    @RequestMapping(value = "/download", method = RequestMethod.POST)
+    public String download(Model model, @RequestParam String filenametemp,
+            @RequestParam String filenameorig) {
+        logger.info("download");
+        model.addAttribute("filenameorig", filenameorig);
+        model.addAttribute("filenametemp", filenametemp);
+        return "upload/download";
     }
     
-   
 }

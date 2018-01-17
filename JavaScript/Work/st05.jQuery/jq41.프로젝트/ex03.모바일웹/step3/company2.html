@@ -14,13 +14,18 @@
 
 <script type="text/javascript" src="../../../jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="viedo.mp4"></script>
 
 <script type="text/javascript">
-
-
-    $(document).ready(function(){
-      $('.play').attr('src','images/m1_02_imgx2.png');
-});
+function movieDialog(str) {
+      //선택한 버튼의 동영상 경로를 불러옴
+      $(".viedo.mp4").attr("src", $(str).attr("value"));
+      //동영상을 다시 load 함
+      $("viedo.mp4").load();
+      //load한 동영상을 재생
+      document.getElementById("viedo").play();
+    };
+}
 </script>
 
 
@@ -42,7 +47,7 @@
                 <span class="play">
                  <video controls width="100%">
                   <!-- Safari/Chrome 브라우저일 경우, 지원하는 MP4 파일을 재생합니다 -->
-                  <source src="viedo.mp4" type="video/mp4"/>
+                  <source src="viedo.mp4" type="viedo.mp4"/>
                      <!-- HTML5 video요소를 지원하지 않는 브라우저의 경우 플래시 무비를 사용합니다 -->
                   <img src="images/m1_02_imgx2.png" width="286" height="168"/>
                  </video>

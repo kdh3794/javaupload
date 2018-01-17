@@ -6,8 +6,30 @@
     <style>
         div { width: 180px;  height: 80px; margin: 3px;  float: left; }
     </style>
-    
-    
+
+    <!-- 임포트 -->
+<script type="text/javascript" src="../jquery-3.2.1.js"></script>
+
+<!--<script type="text/javascript" src="../jquery.easing.1.3.js"></script>   <easing을 사용할때만 추가-->
+
+<script type="text/javascript">
+
+
+    $(document).ready(function(){
+        $('#menu1').click(function(event){
+            $('#message1').load('item.html');
+        });
+
+    $(document).ready(function(){
+        $('#menu2').click(function(event){
+            $('#message2').load('item.html');
+        });
+
+
+});
+</script>
+
+
 
 
 </head>
