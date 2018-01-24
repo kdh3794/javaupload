@@ -176,10 +176,16 @@
         
         <li><a href="/board/articleview/free/1"   target="_blank">/board/articleview/free/1  (GET)</a></li>
         <li><a href="/board/articleview/free/1?curPage=1&searchWord="   target="_blank">/board/articleview/free/1?curPage=1&amp;searchWord=   (GET)</a></li>
+        
+         <li><span> /board/articleview/free/1 에서 쿠키를 이용하여 조회수 1일동 증가 막기 </span></li>
+          <li><span> /board/articleview/free/1 에서 쿠키를 이용하여 조회수 1일동 증가 막기 </span></li>
+         <li><span> /board/articleview/free/1 에서 쿠키를 이용하여 조회수 1일동 증가 막기 </span></li>
+         <li><span> /board/articleview/free/1 에서 쿠키를 이용하여 조회수 1일동 증가 막기 </span></li>
+        
         <li><span> /board/articleview/free/1 에서 쿠키를 이용하여 조회수 1일동 증가 막기 </span></li>
         <br />
         
-        <li><a href="/board/articlewrite?boardcd=free"  target="_blank">/board/articlewrite/free                                                 (GET,POST)</a></li>
+        <li><a href="/board/articlewrite/free"  target="_blank">/board/articlewrite/free                                                 (GET,POST)</a></li>
         <br />
         
         <li><a href="/board/articlemodify?boardcd=free&articleno=17&curPage=1&searchWord=" target="_blank">/board/articlemodify/free?articleno=17&amp;curPage=1&amp;searchWord= (GET,POST)</a></li>
