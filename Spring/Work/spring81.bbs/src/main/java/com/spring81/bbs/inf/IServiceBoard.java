@@ -6,6 +6,7 @@ import com.spring81.bbs.model.ModelArticle;
 public interface IServiceBoard extends IBoard {
     
     ModelArticle transArticle(int articleno);
+    int transDeleteArticle(int articleno);
 
     /*
 	public int getListNo();

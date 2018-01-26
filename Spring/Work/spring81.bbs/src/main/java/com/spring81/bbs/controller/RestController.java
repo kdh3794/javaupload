@@ -35,9 +35,6 @@ public class RestController {
 	private static final Logger logger = LoggerFactory.getLogger(RestController.class);
 	
 
-    
-
-    
     @RequestMapping(value = "/insertone", method = {RequestMethod.GET, RequestMethod.POST} )
     @ResponseBody
     public int insertone(Model model, @RequestBody ModelPerson personJson) {
@@ -315,22 +312,37 @@ public class RestController {
         return boardsvr.getCommentList( articleno );
     }
 
-    @RequestMapping(value = "/insertcomment", method = {RequestMethod.GET, RequestMethod.POST} )
-    @ResponseBody
-    public int insertComment( @RequestBody ModelComments comment) {
-        logger.info("/rest/insertComment");            
-        return boardsvr.insertComment( comment );
+    @RequestMapping(value = "/insertcomment", method = {RequestMethod.POST} )
+    public String insertComment(Model model, @RequestBody ModelComments comment) {
+        logger.info("/rest/insertComment");       
+        
+        // inserted 된 pk 값: commentno 
+        int commentNo = boardsvr.insertComment( comment );
+        
+        if( commentNo > 0 ) {        
+            ModelComments result = boardsvr.getComment(commentNo);            
+            model.addAttribute("comment", result);
+            return "board/articleview-commentlistbody"; // views/board/articleview-commentlistbody
+        }
+        else 
+            return "";
     }
 
-    @RequestMapping(value = "/updatecomment", method = {RequestMethod.GET, RequestMethod.POST} )
+    @RequestMapping(value = "/updatecomment", method = {RequestMethod.POST} )
     @ResponseBody
-    public int updateComment( @RequestBody ModelComments setValue
-                            , @RequestBody ModelComments whereValue) {
-        logger.info("/rest/updateComment");            
+    public int updateComment( @RequestBody ModelComments comment) {
+        logger.info("/rest/updateComment"); 
+        
+        ModelComments setValue = new ModelComments();
+        setValue.setMemo( comment.getMemo() );
+        
+        ModelComments whereValue = new ModelComments();
+        whereValue.setCommentno( comment.getCommentno() );
+        
         return boardsvr.updateComment( setValue, whereValue );
     }
 
-    @RequestMapping(value = "/deletecomment", method = {RequestMethod.GET, RequestMethod.POST} )
+    @RequestMapping(value = "/deletecomment", method = {RequestMethod.POST} )
     @ResponseBody
     public int deleteComment( @RequestBody ModelComments comment) {
         logger.info("/rest/deleteComment");            

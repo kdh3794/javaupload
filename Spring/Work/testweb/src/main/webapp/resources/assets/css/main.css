@@ -3741,15 +3741,22 @@
 		font-size: 0.8em;
 		list-style: none;
 		padding-left: 0;
+		
 	}
 
 		#footer .copyright li {
-			border-left: solid 1px rgba(212, 212, 255, 0.1);
+		border-left: solid 1px rgba(212, 212, 255, 0.1);
 			color: rgba(244, 244, 255, 0.2);
 			display: inline-block;
 			line-height: 1;
 			margin-left: 1em;
-			padding-left: 1em;
+			padding-left: 1em;			
+            
+    
+    
+
+
+			
 		}
 
 			#footer .copyright li:first-child {
