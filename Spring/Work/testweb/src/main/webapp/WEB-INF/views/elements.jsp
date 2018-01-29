@@ -24,7 +24,7 @@
 
         <!-- Header -->
         <header id="header">
-            <a href="index" class="logo"><strong>Forty</strong> <span>by
+            <a href="home" class="logo"><strong>Forty</strong> <span>by
                     HTML5 UP</span></a>
             <nav>
                 <a href="#menu">Menu</a>
@@ -34,7 +34,7 @@
         <!-- Menu -->
         <nav id="menu">
             <ul class="links">
-                <li><a href="index">Home</a></li>
+                <li><a href="home">Home</a></li>
                 <li><a href="landing">Landing</a></li>
                 <li><a href="generic">Generic</a></li>
                 <li><a href="elements">Elements</a></li>
