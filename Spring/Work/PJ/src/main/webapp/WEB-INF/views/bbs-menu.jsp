@@ -3,7 +3,7 @@
 <ul>
 	<li>
 		<ul>
-			<li><a href="pj_training">교육과정</a></li>
+			<li><a href="/pj_training">교육과정</a></li>
 	<!-- 		<li><a href="/board/articlelist/qna" >QnA게시판</a></li>
 			<li><a href="/board/articlelist/data">자료실</a></li> -->
 		</ul>
